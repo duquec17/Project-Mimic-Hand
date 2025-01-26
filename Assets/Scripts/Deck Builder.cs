@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class DeckBuilder : MonoBehaviour
 {
+    /* Purpose: Allows the player to use their mouse and select cards 
+     * present on the screen to be added to their card deck (size - 15).
+     * Writer: Cristian Duque
+     *
+     * Algorithm:
+     * 1. Display all selectable cards
+     * 2. Display current number of cards in deck (Card Count - 0/15)
+     * 3. Highlight a card when the mouse hovers over the card
+     * 4. When a card is selected it is added to deck
+     * 5. 
+     */
+
     // Start is called before the first frame update
     void Start()
     {
