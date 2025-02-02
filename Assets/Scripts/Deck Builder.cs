@@ -12,8 +12,9 @@ public class DeckBuilder : MonoBehaviour
      * 1. Display all selectable cards
      * 2. Display current number of cards in deck (Card Count - 0/15)
      * 3. Highlight a card when the mouse hovers over the card
-     * 4. When a card is selected it is added to deck
+     * 4. When a card is selected, the card is magnified (easier to read)
      * 5. 
+     * 6. 
      */
 
     // Start is called before the first frame update
