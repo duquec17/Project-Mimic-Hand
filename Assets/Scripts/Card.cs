@@ -14,6 +14,7 @@ using UnityEngine;
  * 
  */
 
+[RequireComponent(typeof(CardUI))] // Will automatically attach the CardUI script to every object that is a card
 public class Card : MonoBehaviour
 {
     // Fields and Properties
