@@ -28,11 +28,47 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI cardDesc;
     [SerializeField] private TextMeshProUGUI cardType;
 
-    [Header("Sprite Assets")] // References to the art folder in assets
+    [Header("Sprite Assets")] // Card Types
+                              // References to the art folder in assets
     [SerializeField] private Sprite baseCard;
     [SerializeField] private Sprite buffCard;
     [SerializeField] private Sprite debuffCard;
     [SerializeField] private Sprite wildCard;
 
+    private readonly string base_CD = "DMG";
+    private readonly string debuff_CD = "DEBUFF";
+    private readonly string buff_CD = "BUFF";
+    private readonly string wild_CD = "WILD";
+
+    // End of Fields & Properties.
+
+
     // Methods
+    private void Awake()
+    {
+        card = GetComponent<Card>();
+        SetCardUI();
+    }
+
+    private void OnValidate()
+    {
+        Awake();
+    }
+
+    private void SetCardUI()
+    {
+
+    }
+
+    private void SetCardTexts()
+    {
+        // We need to know the card name, description, and type
+        SetCardEffectType();
+    }
+
+    private void SetCardEffectType()
+    {
+        // We need to know the card effect (DMG/BUFF/DEBUFF/WILD)
+
+    }
 }
