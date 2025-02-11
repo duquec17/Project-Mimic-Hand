@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* Purpose:
- * Define what a card is and can be, while connecting all data and behaviours.
+ * Represents a card deck and also governs the discard pile and works in concordance with the Hand script.
  * 
  * Writer: Cristian Duque
  * ------------------------------------
