@@ -6,10 +6,10 @@ using UnityEngine;
  * Define what a card is and can be, while connecting all data and behaviours.
  * 
  * Writer: Cristian Duque
- * 
+ * ------------------------------------
  * Scripts borrowing from it:
  * Deck Builder.cs
- * 
+ * ------------------------------------
  * Scripts it borrows from:
  * 
  */
