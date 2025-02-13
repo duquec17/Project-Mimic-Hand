@@ -15,6 +15,8 @@ using UnityEngine;
  */
 
 [RequireComponent(typeof(CardUI))] // Will automatically attach the CardUI script to every object that is a card
+[RequireComponent(typeof(CardMovement))] // Will handle everything to do with perceived card movement
+
 public class Card : MonoBehaviour
 {
     // Fields and Properties
