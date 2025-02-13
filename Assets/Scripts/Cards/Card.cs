@@ -15,12 +15,21 @@ using UnityEngine;
  */
 
 [RequireComponent(typeof(CardUI))] // Will automatically attach the CardUI script to every object that is a card
+[RequireComponent(typeof(CardMovement))] // Will handle everything to do with perceived card movement
+
 public class Card : MonoBehaviour
 {
     // Fields and Properties
     [field: SerializeField] public ScriptableCard CardData { get; private set; }
 
     // Methods
+
+    // Set the relevant card data at runtime and update the card's UI
+    public void SetUp(ScriptableCard data)
+    {
+        CardData = data;
+        GetComponent<CardUI>().SetCardUI();
+    }
 
     // Start is called before the first frame update
     void Start()
