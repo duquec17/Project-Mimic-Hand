@@ -539,9 +539,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a960e49409f0a04d92f0ad45aa63b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDeck: {fileID: 11400000, guid: 91591a9de3a8bbf4096289b714d17fb3, type: 2}
+  playerDeck: {fileID: 11400000, guid: 7c345c00bb2514047b5b82b248b3cc85, type: 2}
   cardPrefab: {fileID: 6766238933114745255, guid: 1011030693342fd498126bdc8a89ba1f, type: 3}
   cardCanvas: {fileID: 707561619}
+  deckPile: []
+  discardPile: []
 --- !u!4 &1577544556
 Transform:
   m_ObjectHideFlags: 0
