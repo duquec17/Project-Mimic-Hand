@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Kindness
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: Domain of Kindness
-  <CardDescription>k__BackingField: 
-  <CardType>k__BackingField: 
+  <CardDescription>k__BackingField: Drain HP on hit
+  <CardType>k__BackingField: Buff
   <Image>k__BackingField: {fileID: 0}
-  <EffectType>k__BackingField: 0
-  <CardBackgrounds>k__BackingField: 0
+  <EffectType>k__BackingField: 1
+  <CardBackgrounds>k__BackingField: 1

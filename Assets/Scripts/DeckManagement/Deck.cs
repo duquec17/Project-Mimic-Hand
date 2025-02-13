@@ -26,7 +26,7 @@ public class Deck : MonoBehaviour
     [SerializeField] private Canvas cardCanvas;
 
     // Now to represent the instantiated Cards
-    private List<Card> deckPile;
+    private List<Card> deckPile = new();
     private List<Card> discardPile = new();
 
     public List<Card> HandCards { get; private set; }

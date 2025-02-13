@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9df41b2109986042a9c880d4d0f99d9, type: 3}
   m_Name: Test Deck
   m_EditorClassIdentifier: 
-  <CardsInCollection>k__BackingField: []
+  <CardsInCollection>k__BackingField:
+  - {fileID: 11400000, guid: 0814393aae354784092b6301d63481fb, type: 2}
+  - {fileID: 11400000, guid: 23ae69338b8666c4c84d5fc24a1f6a63, type: 2}
+  - {fileID: 11400000, guid: dd0cf2d962f7c9040b5db08feaa958ac, type: 2}
+  - {fileID: 11400000, guid: aa65d9cb75ee6334b920b6a3609a511e, type: 2}
+  - {fileID: 11400000, guid: d12c5737db401cf4fac5f04ce102d9af, type: 2}
