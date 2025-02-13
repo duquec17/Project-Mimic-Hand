@@ -14,6 +14,7 @@ using UnityEngine;
  * Scripts it borrows from:
  * 
  */
+[CreateAssetMenu(menuName = "Card Collection")]
 public class CardCollection : ScriptableObject
 {
     [field: SerializeField] public List<ScriptableCard> CardsInCollection { get; private set; }
