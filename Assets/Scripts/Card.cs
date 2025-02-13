@@ -22,6 +22,13 @@ public class Card : MonoBehaviour
 
     // Methods
 
+    // Set the relevant card data at runtime and update the card's UI
+    public void SetUp(ScriptableCard data)
+    {
+        CardData = data;
+        GetComponent<CardUI>().SetCardUI();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

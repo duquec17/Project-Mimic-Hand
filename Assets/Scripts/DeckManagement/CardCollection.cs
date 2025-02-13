@@ -16,12 +16,12 @@ using UnityEngine;
  */
 public class CardCollection : ScriptableObject
 {
-    [field: SerializeField] public List<ScriptableObject> CardsInCollection { get; private set; }
+    [field: SerializeField] public List<ScriptableCard> CardsInCollection { get; private set; }
 
     // Optional: If you think you will need to edit the collection at runtime
 
     // Remove card from deck
-    public void RemoveCardFromCollection(ScriptableObject card)
+    public void RemoveCardFromCollection(ScriptableCard card)
     {
         // Checks to see if selected card is already in collection
         // Removes card if present and does nothing when not present.

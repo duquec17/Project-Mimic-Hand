@@ -19,7 +19,19 @@ public class Deck : MonoBehaviour
     public static Deck Instance { get; private set; } // Singleton
 
     // Now we need a reference to what a deck is, aka what cards it contains -> CardCollection
+    // We will work with one deck for now, but you can easily add several choices for the player to pick from
+    [SerializeField] private CardCollection playerDeck;
+    [SerializeField] private Card cardPrefab; // Our cardPrefab, of which we will make copies with the different CardData
 
+    [SerializeField] private Canvas cardCanvas;
+
+    // Now to represent the instantiated Cards
+    private List<Card> deckPile;
+    private List<Card> discardPile = new();
+
+    public List<Card> HandCards { get; private set; }
+
+    // Methods and/or Functions
     private void Awake()
     {
         // Typical singleton declaration
@@ -30,6 +42,37 @@ public class Deck : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        // we will instantiate the deck once, at the start of the game/level
+        InstantiateDeck();
+    }
+
+    private void InstantiateDeck()
+    {
+        for (int i = 0; i < playerDeck.CardsInCollection.Count; i++)
+        {
+            Card card = Instantiate(cardPrefab, cardCanvas.transform); // Instantiates the Card Prefab as a child of the card canvas
+            card.SetUp(playerDeck.CardsInCollection[i]);
+            deckPile.Add(card); // At the start, all cards in the deck, none in hand, none in discard
+            card.gameObject.SetActive(false); // We will later activate the cards when we draw them, for now we just want to build the pool
+        }
+
+        ShuffleDeck();
+    }
+
+    // Call once at start and whenever deck count hits zero
+    private void ShuffleDeck()
+    {
+        for (int i = deckPile.Count -1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            var temp = deckPile[i];
+            deckPile[i] = deckPile[j];
+            deckPile[j] = temp;
         }
     }
 }
