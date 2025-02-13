@@ -16,4 +16,20 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     // Fields and Properties
+    public static Deck Instance { get; private set; } // Singleton
+
+    // Now we need a reference to what a deck is, aka what cards it contains -> CardCollection
+
+    private void Awake()
+    {
+        // Typical singleton declaration
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
