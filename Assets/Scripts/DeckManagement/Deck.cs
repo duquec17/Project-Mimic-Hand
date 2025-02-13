@@ -26,10 +26,10 @@ public class Deck : MonoBehaviour
     [SerializeField] private Canvas cardCanvas;
 
     // Now to represent the instantiated Cards
-    private List<Card> deckPile = new();
-    private List<Card> discardPile = new();
+    public List<Card> deckPile = new();
+    public List<Card> discardPile = new();
 
-    public List<Card> HandCards { get; private set; }
+    public List<Card> HandCards { get; private set; } = new();
 
     // Methods and/or Functions
     private void Awake()
@@ -87,9 +87,13 @@ public class Deck : MonoBehaviour
                 ShuffleDeck();
             }
 
-            HandCards.Add(deckPile[0]);
-            deckPile[0].gameObject.SetActive(true);
-            discardPile.RemoveAt(0);
+            if (deckPile.Count > 0)
+            {
+                HandCards.Add(deckPile[0]);
+                deckPile[0].gameObject.SetActive(true);
+                deckPile.RemoveAt(0);
+            }
+            
         }
     }
 
