@@ -75,4 +75,34 @@ public class Deck : MonoBehaviour
             deckPile[j] = temp;
         }
     }
+
+    public void DrawHand(int amount = 5)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            if (deckPile.Count <= 0)
+            {
+                discardPile = deckPile;
+                discardPile.Clear();
+                ShuffleDeck();
+            }
+
+            HandCards.Add(deckPile[0]);
+            deckPile[0].gameObject.SetActive(true);
+            discardPile.RemoveAt(0);
+        }
+    }
+
+    // We will assume no cards can be discarded directly from the deck to the discard pile
+    // otherwise mate two methods, one to discard from hand, one from deck
+    // TODO: Adjust from generalized design to specifics
+    public void DiscardCard(Card card)
+    {
+        if (HandCards.Contains(card))
+        {
+            HandCards.Remove(card);
+            discardPile.Add(card);
+            card.gameObject.SetActive(false);
+        }
+    }
 }
