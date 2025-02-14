@@ -22,6 +22,8 @@ public class Deck : MonoBehaviour
     // We will work with one deck for now, but you can easily add several choices for the player to pick from
     [SerializeField] private CardCollection playerDeck;
     [SerializeField] private Card cardPrefab; // Our cardPrefab, of which we will make copies with the different CardData
+    
+    [SerializeField] private GameObject DeckUI;
 
     [SerializeField] private Canvas cardCanvas;
 
@@ -32,6 +34,15 @@ public class Deck : MonoBehaviour
     public List<Card> HandCards { get; private set; } = new();
 
     // Methods and/or Functions
+    public void PopulateDeckUI()
+    {
+        foreach (var cardData in playerDeck.CardsInCollection)
+        {
+            Card card = Instantiate(cardPrefab, DeckUI.transform); // Instantiate card as a child of the panel
+            card.SetUp(cardData); // Use the SetUp method to assign the card data
+        }
+    }
+
     private void Awake()
     {
         // Typical singleton declaration
@@ -43,12 +54,14 @@ public class Deck : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     private void Start()
     {
         // we will instantiate the deck once, at the start of the game/level
         InstantiateDeck();
+        PopulateDeckUI();
     }
 
     private void InstantiateDeck()
