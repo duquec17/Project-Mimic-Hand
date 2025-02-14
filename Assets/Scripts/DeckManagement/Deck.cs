@@ -60,8 +60,8 @@ public class Deck : MonoBehaviour
     private void Start()
     {
         // we will instantiate the deck once, at the start of the game/level
-        InstantiateDeck();
-        PopulateDeckUI();
+        InstantiateDeck(); // This fills the player's deck (will need to be an empty one that can be filled)
+        PopulateDeckUI(); // This displays all selectable cards for the player
     }
 
     private void InstantiateDeck()
