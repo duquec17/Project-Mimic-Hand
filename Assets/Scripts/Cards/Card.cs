@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /* Purpose:
  * Define what a card is and can be, while connecting all data and behaviours.
@@ -17,18 +18,25 @@ using UnityEngine;
 [RequireComponent(typeof(CardUI))] // Will automatically attach the CardUI script to every object that is a card
 [RequireComponent(typeof(CardMovement))] // Will handle everything to do with perceived card movement
 
-public class Card : MonoBehaviour
+public class Card : MonoBehaviour, IPointerClickHandler
 {
     // Fields and Properties
     [field: SerializeField] public ScriptableCard CardData { get; private set; }
 
-    // Methods
+   
+
+    // Methods & Functions
 
     // Set the relevant card data at runtime and update the card's UI
     public void SetUp(ScriptableCard data)
     {
         CardData = data;
         GetComponent<CardUI>().SetCardUI();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Deck.Instance.OnCardSelected(this);
     }
 
     // Start is called before the first frame update

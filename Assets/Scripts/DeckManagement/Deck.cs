@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /* Purpose:
  * Represents a card deck and also governs the discard pile and works in concordance with the Hand script.
@@ -20,12 +21,18 @@ public class Deck : MonoBehaviour
 
     // Now we need a reference to what a deck is, aka what cards it contains -> CardCollection
     // We will work with one deck for now, but you can easily add several choices for the player to pick from
-    [SerializeField] private CardCollection playerDeck;
+    [SerializeField] private CardCollection playerDeck; // Holds the cards available for selection (code wise)
+    [SerializeField] private CardCollection currentDeck; // The deck being built by the user (code wise)
     [SerializeField] private Card cardPrefab; // Our cardPrefab, of which we will make copies with the different CardData
     
-    [SerializeField] private GameObject DeckUI;
+    [SerializeField] private GameObject DeckUI; // Physically holds all cards in collection (UI)
+    [SerializeField] private GameObject actionButtonsPanel; // Panel with add and remove buttons
+    [SerializeField] private Button addButton;
+    [SerializeField] private Button removeButton; 
 
     [SerializeField] private Canvas cardCanvas;
+
+    private Card selectedCard;
 
     // Now to represent the instantiated Cards
     public List<Card> deckPile = new();
@@ -62,6 +69,9 @@ public class Deck : MonoBehaviour
         // we will instantiate the deck once, at the start of the game/level
         InstantiateDeck(); // This fills the player's deck (will need to be an empty one that can be filled)
         PopulateDeckUI(); // This displays all selectable cards for the player
+
+        actionButtonsPanel.SetActive(false); // Make buttons invisible until click a card
+
     }
 
     private void InstantiateDeck()
@@ -75,6 +85,19 @@ public class Deck : MonoBehaviour
         }
 
         ShuffleDeck();
+    }
+
+    // Allows cards to be selected
+    public void OnCardSelected(Card card)
+    {
+        // Show action buttons next to the selected card
+        selectedCard = card;
+        actionButtonsPanel.SetActive(true);
+
+        // Position the panel near the card
+        RectTransform cardRect = card.GetComponent<RectTransform>();
+        RectTransform panelRect = actionButtonsPanel.GetComponent<RectTransform>();
+        panelRect.position = cardRect.position + new Vector3(0, -100, 0); // Adjust offset as needed
     }
 
     // Call once at start and whenever deck count hits zero
