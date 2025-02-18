@@ -74,6 +74,7 @@ public class Deck : MonoBehaviour
         actionButtonsPanel.SetActive(false); // Make buttons invisible until click a card
 
         addButton.onClick.AddListener(AddCardToCurrentDeck); // Assigns function to add card button
+        removeButton.onClick.AddListener(RemoveCardFromCurrentDeck); // Assigns function to add card button
     }
 
     private void ClearCurrentDeck()
