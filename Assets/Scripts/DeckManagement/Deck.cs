@@ -67,6 +67,7 @@ public class Deck : MonoBehaviour
     private void Start()
     {
         // we will instantiate the deck once, at the start of the game/level
+        ClearCurrentDeck();
         InstantiateDeck(); // This fills the player's deck (will need to be an empty one that can be filled)
         PopulateDeckUI(); // This displays all selectable cards for the player
 
@@ -75,6 +76,16 @@ public class Deck : MonoBehaviour
         addButton.onClick.AddListener(AddCardToCurrentDeck); // Assigns function to add card button
     }
 
+    private void ClearCurrentDeck()
+    {
+        if (currentDeck.CardsInCollection.Count > 0)
+        {
+            currentDeck.CardsInCollection.Clear();
+            Debug.LogWarning("Reset deck");
+        }
+    }
+
+    // Populates deck with full card collection
     private void InstantiateDeck()
     {
         for (int i = 0; i < playerDeck.CardsInCollection.Count; i++)
@@ -144,6 +155,30 @@ public class Deck : MonoBehaviour
             currentDeck.AddCardToCollection(selectedCardData); // Adds card to empty deck
 
             Debug.Log($"Added {selectedCardData.name} to the deck. Current deck size: {currentDeck.CardsInCollection.Count}");
+        }
+    }
+
+    // Will add card to empty deck
+    public void RemoveCardFromCurrentDeck()
+    {
+        if (selectedCard == null)
+        {
+            Debug.LogWarning("No card selected");
+            return;
+        }
+
+        // Check if deck is empty
+        if (currentDeck.CardsInCollection.Count <= 0)
+        {
+            Debug.LogWarning("Empty deck, add a card");
+            return;
+        }
+        else
+        {
+            ScriptableCard selectedCardData = selectedCard.CardData; // Grabs card data from selected card 
+            currentDeck.RemoveCardFromCollection(selectedCardData); // Removes card to empty deck
+
+            Debug.Log($"Removed {selectedCardData.name} from deck. Current deck size: {currentDeck.CardsInCollection.Count}");
         }
     }
 
