@@ -28,7 +28,9 @@ public class Deck : MonoBehaviour
     [SerializeField] private GameObject DeckUI; // Physically holds all cards in collection (UI)
     [SerializeField] private GameObject actionButtonsPanel; // Panel with add and remove buttons
     [SerializeField] private Button addButton;
-    [SerializeField] private Button removeButton; 
+    [SerializeField] private Button removeButton;
+    [SerializeField] private Button startLevelButton; // References existing button in scene
+
 
     [SerializeField] private Canvas cardCanvas;
 
@@ -75,6 +77,7 @@ public class Deck : MonoBehaviour
 
         addButton.onClick.AddListener(AddCardToCurrentDeck); // Assigns function to add card button
         removeButton.onClick.AddListener(RemoveCardFromCurrentDeck); // Assigns function to add card button
+        startLevelButton.onClick.AddListener(ChangeScene); // Assigns start level button the ability to change scene
     }
 
     private void ClearCurrentDeck()
@@ -156,7 +159,24 @@ public class Deck : MonoBehaviour
             currentDeck.AddCardToCollection(selectedCardData); // Adds card to empty deck
 
             Debug.Log($"Added {selectedCardData.name} to the deck. Current deck size: {currentDeck.CardsInCollection.Count}");
+
+            if (currentDeck.CardsInCollection.Count == 15)
+            {
+                EnableStartLevelButton();
+            }
         }
+    }
+
+    private void EnableStartLevelButton()
+    {
+        startLevelButton.gameObject.SetActive(true); // Makes button visible
+        startLevelButton.interactable = true; // Makes button interactable
+        Debug.Log("Scene change ready");
+    }
+
+    public void ChangeScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Training ground");
     }
 
     // Will add card to empty deck
