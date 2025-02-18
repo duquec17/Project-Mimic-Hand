@@ -90,15 +90,38 @@ public class Deck : MonoBehaviour
     // Allows cards to be selected
     public void OnCardSelected(Card card)
     {
+        // Deselect the previous card
+        if (selectedCard != null && selectedCard != card)
+        {
+            // Clear previous selection (optional visual indication logic can go here)
+            ClearSelection();
+        }
+
         // Show action buttons next to the selected card
         selectedCard = card;
+        Debug.Log($"Card selected: {card.name}");
         actionButtonsPanel.SetActive(true);
 
         // Position the panel near the card
         RectTransform cardRect = card.GetComponent<RectTransform>();
         RectTransform panelRect = actionButtonsPanel.GetComponent<RectTransform>();
-        panelRect.position = cardRect.position + new Vector3(0, -100, 0); // Adjust offset as needed
+
+        // Calculate offset (adjust values as needed for your UI design)
+        Vector3 offset = new Vector3(0, -100, 0);
+
+        // Update panel position
+        panelRect.position = cardRect.position + offset;
+
+        Debug.Log($"Panel position updated to: {panelRect.position}");
     }
+
+    // Hide action buttons
+    public void ClearSelection()
+    {
+        selectedCard = null;
+        actionButtonsPanel.SetActive(false);
+    }
+
 
     // Call once at start and whenever deck count hits zero
     private void ShuffleDeck()
