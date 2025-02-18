@@ -72,6 +72,7 @@ public class Deck : MonoBehaviour
 
         actionButtonsPanel.SetActive(false); // Make buttons invisible until click a card
 
+        addButton.onClick.AddListener(AddCardToCurrentDeck); // Assigns function to add card button
     }
 
     private void InstantiateDeck()
@@ -87,7 +88,7 @@ public class Deck : MonoBehaviour
         ShuffleDeck();
     }
 
-    // Allows cards to be selected
+    // Allows cards to be selected and display the button
     public void OnCardSelected(Card card)
     {
         // Deselect the previous card
@@ -122,6 +123,29 @@ public class Deck : MonoBehaviour
         actionButtonsPanel.SetActive(false);
     }
 
+    // Will add card to empty deck
+    public void AddCardToCurrentDeck()
+    {
+        if (selectedCard == null)
+        {
+            Debug.LogWarning("No card selected");
+            return;
+        }
+
+        // Check if deck is full
+        if (currentDeck.CardsInCollection.Count >= 15)
+        {
+            Debug.LogWarning("Full deck, remove card");
+            return;
+        }
+        else
+        {
+            ScriptableCard selectedCardData = selectedCard.CardData; // Grabs card data from selected card 
+            currentDeck.AddCardToCollection(selectedCardData); // Adds card to empty deck
+
+            Debug.Log($"Added {selectedCardData.name} to the deck. Current deck size: {currentDeck.CardsInCollection.Count}");
+        }
+    }
 
     // Call once at start and whenever deck count hits zero
     private void ShuffleDeck()
@@ -135,6 +159,7 @@ public class Deck : MonoBehaviour
         }
     }
 
+    // Needed when insde of the level
     public void DrawHand(int amount = 5)
     {
         for (int i = 0; i < amount; i++)
@@ -156,8 +181,9 @@ public class Deck : MonoBehaviour
         }
     }
 
+    // Needed when inside of the level
     // We will assume no cards can be discarded directly from the deck to the discard pile
-    // otherwise mate two methods, one to discard from hand, one from deck
+    // otherwise make two methods, one to discard from hand, one from deck
     // TODO: Adjust from generalized design to specifics
     public void DiscardCard(Card card)
     {
