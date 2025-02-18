@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/DeckBuilder.unity
+    guid: cd1a6b812c9796f44a88c63b610f34ee
+  - enabled: 1
+    path: Assets/Scenes/Training ground.unity
+    guid: 62306e325cbe12b489956db3cd75237a
   m_configObjects: {}
