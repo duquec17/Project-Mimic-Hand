@@ -17,18 +17,14 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     // Variable List
-    public float MoveSpeed;
-    float speedX, speedY;
-    Rigidbody2D rb;
-
-    /* Algorithm
-     * 1. Assign speed to player
-     * 2. Assign keys to directions
-     *  a. AWSD for direction buttons
-     *  b. UIOPJ for attack buttons
-     * 3. 
-     */
-
+    public float moveSpeed;
+    public float jumpForce;
+    
+    public LayerMask groundLayer;
+    public Transform groundPosition;
+    
+    private Rigidbody2D rb;
+    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +35,16 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedX = Input.GetAxisRaw("Horizontal") * MoveSpeed;
-        speedY = Input.GetAxisRaw("Vertical") * MoveSpeed;
-        rb.velocity = new Vector2(speedX, speedY);
+        // Checks if is on the ground
+        isGrounded = Physics2D.OverlapCircle(groundPosition.position, 0.1f, groundLayer);
+        
+        float moveDirection = Input.GetAxisRaw("Horizontal"); // Get horizontal movement input
+        rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y); // Apply horizontal velocity directly
+
+        // Handles jumping
+        if (isGrounded && Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
 }
