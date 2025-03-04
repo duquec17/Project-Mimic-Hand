@@ -46,5 +46,45 @@ public class PlayerControls : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+
+        AttackControls();
+    }
+
+    private void AttackControls()
+    {
+        // Loop iterating to see each attack input key UIOPJ
+        foreach (KeyCode key in new[] {KeyCode.U, KeyCode.I, KeyCode.O, KeyCode.P, KeyCode.J })
+        {
+            if (Input.GetKeyDown(key))
+            {
+                switch (key)
+                {
+                    // Left most attack card
+                    case KeyCode.U:
+                        Debug.Log("U key pressed!");
+                        break;
+                    // 2nd Left most attack card
+                    case KeyCode.I:
+                        Debug.Log("I key pressed!");
+                        break;
+
+                    // Middle attack card
+                    case KeyCode.O:
+                        Debug.Log("O key pressed!");
+                        break;
+
+                    // 2nd Right most attack card
+                    case KeyCode.P:
+                        Debug.Log("P key pressed!");
+                        break;
+
+                    // Right most attack card
+                    case KeyCode.J:
+                        Debug.Log("J key pressed!");
+                        break;
+                }
+            }
+        }
+        
     }
 }
