@@ -4,8 +4,8 @@ using UnityEngine;
 
 /* Purpose:
  * Handles basic player Controls. Examples 8 direction movement (Up & down for passing through planes).
- * The key binds that determine which card is used from the hand. 
- * 
+ * The key binds that determine which card is used from the hand. Checks for when specific key is pressed
+ * then should play connected attack animation with card effect. 
  * Writer: Cristian Duque
  * ------------------------------------
  * Scripts borrowing from it:
@@ -25,6 +25,12 @@ public class PlayerControls : MonoBehaviour
     
     private Rigidbody2D rb;
     private bool isGrounded;
+
+    [SerializeField] private Transform attackTransform;
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private LayerMask attackableLayer;
+    [SerializeField] private float damageAmount = 1f;
+    private RaycastHit2D[] hits;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +68,9 @@ public class PlayerControls : MonoBehaviour
                     // Left most attack card
                     case KeyCode.U:
                         Debug.Log("U key pressed!");
+                        Attack();
                         break;
+
                     // 2nd Left most attack card
                     case KeyCode.I:
                         Debug.Log("I key pressed!");
@@ -86,5 +94,27 @@ public class PlayerControls : MonoBehaviour
             }
         }
         
+    }
+
+    private void Attack()
+    {
+        // 
+        hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
+        
+        for (int i = 0; i < hits.Length; i++)
+        {
+            IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+            if (iDamageable != null)
+            {
+                // Apply damage
+                iDamageable.Damage(damageAmount);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackTransform.position, attackRange);
     }
 }

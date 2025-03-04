@@ -246,7 +246,8 @@ GameObject:
   - component: {fileID: 180304950}
   - component: {fileID: 180304949}
   - component: {fileID: 180304948}
-  m_Layer: 0
+  - component: {fileID: 180304952}
+  m_Layer: 7
   m_Name: Dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,6 +368,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180304952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180304947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5989a9f2c3ede1c449516804010f1b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
 --- !u!1 &255991880
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,12 +634,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9145044617915373789, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
-      propertyPath: jumpForce
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145044617915373789, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
-      propertyPath: moveSpeed
-      value: 5
+      propertyPath: attackableLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 9145044617915373791, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
       propertyPath: m_Name
