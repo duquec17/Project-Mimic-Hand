@@ -15,6 +15,6 @@ MonoBehaviour:
   <CardName>k__BackingField: Domain of Patience
   <CardDescription>k__BackingField: Survive a fatal attack
   <CardType>k__BackingField: Buff
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 56c4025f63ed6604cb6f390caf2dc041, type: 3}
   <EffectType>k__BackingField: 1
   <CardBackgrounds>k__BackingField: 1
