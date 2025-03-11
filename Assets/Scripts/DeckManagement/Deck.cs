@@ -122,6 +122,13 @@ public class Deck : MonoBehaviour
     // Allows cards to be selected and display the button
     public void OnCardSelected(Card card)
     {
+        // If it's in the gameplay phase, do nothing when a card is clicked
+        if (isGameplayPhase)
+        {
+            Debug.Log("In gameplay phase, clicking on cards does nothing.");
+            return; // Exit early
+        }
+
         // Deselect the previous card
         if (selectedCard != null && selectedCard != card)
         {
@@ -131,7 +138,7 @@ public class Deck : MonoBehaviour
 
         // Show action buttons next to the selected card
         selectedCard = card;
-        Debug.Log($"Card selected: {card.name}");
+        // TBR: Debug.Log($"Card selected: {card.name}");
         actionButtonsPanel.SetActive(true);
 
         // Position the panel near the card
@@ -144,7 +151,7 @@ public class Deck : MonoBehaviour
         // Update panel position
         panelRect.position = cardRect.position + offset;
 
-        Debug.Log($"Panel position updated to: {panelRect.position}");
+        // TBR: Debug.Log($"Panel position updated to: {panelRect.position}");
     }
 
     // Hide action buttons
@@ -239,21 +246,50 @@ public class Deck : MonoBehaviour
     }
 
     // Needed when insde of the level
+    [SerializeField] private GameObject handContainer; // The container holding the hand of cards
+    [SerializeField] private HorizontalLayoutGroup handLayoutGroup; // The layout group for the cards
     public void DrawHand(int amount = 5)
     {
+        // Populate the deckPile from currentDeck if it is not already populated
+        if (deckPile.Count == 0 && currentDeck.CardsInCollection.Count > 0)
+        {
+            foreach (var cardData in currentDeck.CardsInCollection)
+            {
+                Card card = Instantiate(cardPrefab, cardCanvas.transform);
+                card.SetUp(cardData);
+                card.gameObject.SetActive(false); // Cards start inactive until drawn
+                deckPile.Add(card);
+            }
+
+            ShuffleDeck();
+        }
+
+        // Clear the current hand before drawing new cards
+        HandCards.Clear();
+
         for (int i = 0; i < amount; i++)
         {
             if (deckPile.Count <= 0)
             {
-                discardPile = deckPile;
-                discardPile.Clear();
-                ShuffleDeck();
+                if (discardPile.Count > 0)
+                {
+                    deckPile.AddRange(discardPile);
+                    discardPile.Clear();
+                    ShuffleDeck();
+                }
+                else
+                {
+                    Debug.LogWarning("No cards left to draw!");
+                    break;
+                }
             }
 
             if (deckPile.Count > 0)
             {
-                HandCards.Add(deckPile[0]);
-                deckPile[0].gameObject.SetActive(true);
+                Card drawnCard = deckPile[0];
+                HandCards.Add(drawnCard);
+                drawnCard.gameObject.SetActive(true);
+                drawnCard.transform.SetParent(handContainer.transform, false); // Set the card's parent to the hand container
                 deckPile.RemoveAt(0);
             }
         }
@@ -272,6 +308,13 @@ public class Deck : MonoBehaviour
         {
             Debug.Log("Hand is empty.");
         }
+
+        // Position the hand container at the bottom right of the screen
+        RectTransform rectTransform = handContainer.GetComponent<RectTransform>();
+        //rectTransform.anchorMin = new Vector2(1, 0); // Bottom-right corner
+        //rectTransform.anchorMax = new Vector2(1, 0); // Bottom-right corner
+        //rectTransform.pivot = new Vector2(1, 0); // Bottom-right corner
+        //rectTransform.anchoredPosition = new Vector2(-20, 20); // Offset for spacing from screen 
     }
 
     // Needed when inside of the level
