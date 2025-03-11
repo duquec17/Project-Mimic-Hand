@@ -40,7 +40,9 @@ public class Deck : MonoBehaviour
     public List<Card> deckPile = new();
     public List<Card> discardPile = new();
 
+    // Hand variables
     public List<Card> HandCards { get; private set; } = new();
+    private bool isGameplayPhase = false;
 
     // Methods and/or Functions
     public void PopulateDeckUI()
@@ -68,6 +70,20 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
+        // If scene is not the deck builder scene than cut short everything
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "DeckBuilder")
+        {
+            isGameplayPhase = true; // Mark that we are transitioning to gameplay
+
+            // Deactivate UI for deck-building
+            DeckUI.SetActive(false);
+            actionButtonsPanel.SetActive(false);
+            
+            // Draw cards for current hand
+            DrawHand();
+
+            return ;
+        }
         // we will instantiate the deck once, at the start of the game/level
         ClearCurrentDeck();
         InstantiateDeck(); // This fills the player's deck (will need to be an empty one that can be filled)
@@ -167,6 +183,7 @@ public class Deck : MonoBehaviour
         }
     }
 
+    // Function that determins when able to change scenes
     private void EnableStartLevelButton()
     {
         startLevelButton.gameObject.SetActive(true); // Makes button visible
@@ -174,8 +191,14 @@ public class Deck : MonoBehaviour
         Debug.Log("Scene change ready");
     }
 
+    // Function to change scenes (needs to adjusted for multiple scenes)
     public void ChangeScene()
     {
+        isGameplayPhase = true; // Mark that we are transitioning to gameplay
+
+        // Deactivate UI for deck-building
+        DeckUI.SetActive(false);
+        actionButtonsPanel.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Training ground");
     }
 
@@ -233,7 +256,21 @@ public class Deck : MonoBehaviour
                 deckPile[0].gameObject.SetActive(true);
                 deckPile.RemoveAt(0);
             }
-            
+        }
+
+        // Log the current hand
+        if (HandCards.Count > 0)
+        {
+            string handContents = "Current hand: ";
+            foreach (Card card in HandCards)
+            {
+                handContents += card.name + ", "; // Replace `card.name` with the relevant property of your Card class
+            }
+            Debug.Log(handContents.TrimEnd(',', ' '));
+        }
+        else
+        {
+            Debug.Log("Hand is empty.");
         }
     }
 

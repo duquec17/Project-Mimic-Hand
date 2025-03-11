@@ -21,6 +21,7 @@ public class DummyHealth : MonoBehaviour, IDamageable
         currentHealth -= damageAmount;
         Debug.Log("HP is: " + currentHealth);
 
+        // Destroy enemy when its health is all gone
         if (currentHealth <= 0)
         {
             Die();
