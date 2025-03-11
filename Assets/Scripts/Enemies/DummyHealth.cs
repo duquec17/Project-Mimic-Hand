@@ -17,7 +17,9 @@ public class DummyHealth : MonoBehaviour, IDamageable
     // Changes health based on damage dealt
     public void Damage(float damageAmount)
     {
+        // Decreases HP basses on damage dealt
         currentHealth -= damageAmount;
+        Debug.Log("HP is: " + currentHealth);
 
         if (currentHealth <= 0)
         {

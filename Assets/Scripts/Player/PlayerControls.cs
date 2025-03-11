@@ -67,28 +67,27 @@ public class PlayerControls : MonoBehaviour
                 {
                     // Left most attack card
                     case KeyCode.U:
-                        Debug.Log("U key pressed!");
                         Attack();
                         break;
 
                     // 2nd Left most attack card
                     case KeyCode.I:
-                        Debug.Log("I key pressed!");
+                        Attack();
                         break;
 
                     // Middle attack card
                     case KeyCode.O:
-                        Debug.Log("O key pressed!");
+                        Attack();
                         break;
 
                     // 2nd Right most attack card
                     case KeyCode.P:
-                        Debug.Log("P key pressed!");
+                        Attack();
                         break;
 
                     // Right most attack card
                     case KeyCode.J:
-                        Debug.Log("J key pressed!");
+                        Attack();
                         break;
                 }
             }
