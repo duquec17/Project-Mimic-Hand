@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ using UnityEngine;
  */
 public class PlayerControls : MonoBehaviour
 {
-    // Variable List
+    // Player Variable List
     public float moveSpeed;
     public float jumpForce;
     
@@ -32,10 +33,21 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float damageAmount = 1f;
     private RaycastHit2D[] hits;
 
+    [SerializeField] private Deck deck;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (deck == null)
+        {
+            Debug.LogError("No assigned deck");
+        }
+        else
+        {
+            Debug.Log("Deck name: " + deck.name);
+        }
     }
 
     // Update is called once per frame
@@ -53,52 +65,55 @@ public class PlayerControls : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
+        // Checking for attack key inputs
         AttackControls();
+
+        // Check to see if hand is empty and refill it
+        if(deck.HandCards.Count < 1)
+        {
+            deck.DrawHand();
+        }
     }
 
     private void AttackControls()
     {
         // Loop iterating to see each attack input key UIOPJ
-        foreach (KeyCode key in new[] {KeyCode.U, KeyCode.I, KeyCode.O, KeyCode.P, KeyCode.J })
+        foreach (KeyCode key in new[] { KeyCode.U, KeyCode.I, KeyCode.O, KeyCode.P, KeyCode.J })
         {
             if (Input.GetKeyDown(key))
             {
-                switch (key)
+                int cardIndex = GetCardIndexFromKey(key);
+                if (cardIndex != -1)
                 {
-                    // Left most attack card
-                    case KeyCode.U:
-                        Debug.Log("U key pressed!");
-                        Attack();
-                        break;
-
-                    // 2nd Left most attack card
-                    case KeyCode.I:
-                        Debug.Log("I key pressed!");
-                        break;
-
-                    // Middle attack card
-                    case KeyCode.O:
-                        Debug.Log("O key pressed!");
-                        break;
-
-                    // 2nd Right most attack card
-                    case KeyCode.P:
-                        Debug.Log("P key pressed!");
-                        break;
-
-                    // Right most attack card
-                    case KeyCode.J:
-                        Debug.Log("J key pressed!");
-                        break;
+                    Attack(cardIndex);
                 }
             }
         }
-        
+
     }
 
-    private void Attack()
+    private int GetCardIndexFromKey(KeyCode key)
     {
-        // 
+        switch (key)
+        {
+            case KeyCode.U:
+                return 0; // Leftmost card
+            case KeyCode.I:
+                return 1; // 2nd Leftmost card
+            case KeyCode.O:
+                return 2; // Middle card
+            case KeyCode.P:
+                return 3; // 2nd Rightmost card
+            case KeyCode.J:
+                return 4; // Rightmost card
+            default:
+                return -1; // Invald attack key press
+        }
+    }
+
+    private void Attack(int cardIndex)
+    {
+        // Creates a circle hit box that checks from enemies inside of it
         hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
         
         for (int i = 0; i < hits.Length; i++)
@@ -111,8 +126,37 @@ public class PlayerControls : MonoBehaviour
                 iDamageable.Damage(damageAmount);
             }
         }
+
+        // Removes the used card from the hand
+        if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
+        {
+            deck.DiscardCard(deck.HandCards[cardIndex]);
+        } else
+        {
+            Debug.LogWarning("Trying to discard a card that doesn't exist in the hand");
+        }
     }
 
+    /* TBD: uses the 2nd card in the hand which is tied to pressing the J key when in the level
+    private void JAttack()
+    {
+        // 
+        hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+            if (iDamageable != null)
+            {
+                // Apply damage
+                iDamageable.Damage(damageAmount);
+            }
+        }
+    }
+    */ 
+    
+    // Draws the attack hitbox in the editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
