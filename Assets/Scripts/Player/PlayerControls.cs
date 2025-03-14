@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ using UnityEngine;
  */
 public class PlayerControls : MonoBehaviour
 {
-    // Variable List
+    // Player Variable List
     public float moveSpeed;
     public float jumpForce;
     
@@ -32,10 +33,21 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float damageAmount = 1f;
     private RaycastHit2D[] hits;
 
+    [SerializeField] private Deck deck;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (deck == null)
+        {
+            Debug.LogError("No assigned deck");
+        }
+        else
+        {
+            Debug.Log("Deck name: " + deck.name);
+        }
     }
 
     // Update is called once per frame
@@ -59,47 +71,64 @@ public class PlayerControls : MonoBehaviour
     private void AttackControls()
     {
         // Loop iterating to see each attack input key UIOPJ
-        foreach (KeyCode key in new[] {KeyCode.U, KeyCode.I, KeyCode.O, KeyCode.P, KeyCode.J })
+        foreach (KeyCode key in new[] { KeyCode.U, KeyCode.I, KeyCode.O, KeyCode.P, KeyCode.J })
         {
             if (Input.GetKeyDown(key))
             {
-                switch (key)
+                int cardIndex = GetCardIndexFromKey(key);
+                if (cardIndex != -1)
                 {
-                    // Left most attack card
-                    case KeyCode.U:
-                        Attack();
-                        break;
-
-                    // 2nd Left most attack card
-                    case KeyCode.I:
-                        Attack();
-                        break;
-
-                    // Middle attack card
-                    case KeyCode.O:
-                        Attack();
-                        break;
-
-                    // 2nd Right most attack card
-                    case KeyCode.P:
-                        Attack();
-                        break;
-
-                    // Right most attack card
-                    case KeyCode.J:
-                        Attack();
-                        break;
+                    Attack(cardIndex);
                 }
             }
         }
-        
+
     }
 
-    private void Attack()
+    private int GetCardIndexFromKey(KeyCode key)
+    {
+        switch (key)
+        {
+            case KeyCode.U:
+                return 0; // Leftmost card
+            case KeyCode.I:
+                return 1; // 2nd Leftmost card
+            case KeyCode.O:
+                return 2; // Middle card
+            case KeyCode.P:
+                return 3; // 2nd Rightmost card
+            case KeyCode.J:
+                return 4; // Rightmost card
+            default:
+                return -1; // Invald attack key press
+        }
+    }
+
+    private void Attack(int cardIndex)
+    {
+        // Creates a circle hit box that checks from enemies inside of it
+        hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
+        
+        for (int i = 0; i < hits.Length; i++)
+        {
+            IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+            if (iDamageable != null)
+            {
+                // Apply damage
+                iDamageable.Damage(damageAmount);
+            }
+        }
+
+
+    }
+
+    // uses the 2nd card in the hand which is tied to pressing the J key when in the level
+    private void JAttack()
     {
         // 
         hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
-        
+
         for (int i = 0; i < hits.Length; i++)
         {
             IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();

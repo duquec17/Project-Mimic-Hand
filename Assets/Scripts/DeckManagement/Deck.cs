@@ -125,7 +125,6 @@ public class Deck : MonoBehaviour
         // If it's in the gameplay phase, do nothing when a card is clicked
         if (isGameplayPhase)
         {
-            Debug.Log("In gameplay phase, clicking on cards does nothing.");
             return; // Exit early
         }
 
