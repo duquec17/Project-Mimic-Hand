@@ -65,7 +65,14 @@ public class PlayerControls : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
+        // Checking for attack key inputs
         AttackControls();
+
+        // Check to see if hand is empty and refill it
+        if(deck.HandCards.Count < 1)
+        {
+            deck.DrawHand();
+        }
     }
 
     private void AttackControls()
@@ -120,10 +127,17 @@ public class PlayerControls : MonoBehaviour
             }
         }
 
-
+        // Removes the used card from the hand
+        if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
+        {
+            deck.DiscardCard(deck.HandCards[cardIndex]);
+        } else
+        {
+            Debug.LogWarning("Trying to discard a card that doesn't exist in the hand");
+        }
     }
 
-    // uses the 2nd card in the hand which is tied to pressing the J key when in the level
+    /* TBD: uses the 2nd card in the hand which is tied to pressing the J key when in the level
     private void JAttack()
     {
         // 
@@ -140,7 +154,9 @@ public class PlayerControls : MonoBehaviour
             }
         }
     }
-
+    */ 
+    
+    // Draws the attack hitbox in the editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);

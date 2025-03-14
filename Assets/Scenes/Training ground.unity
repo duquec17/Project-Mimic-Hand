@@ -1879,6 +1879,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9145044617915373789, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
+      propertyPath: deck
+      value: 
+      objectReference: {fileID: 1874653659}
+    - target: {fileID: 9145044617915373789, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
       propertyPath: attackableLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
