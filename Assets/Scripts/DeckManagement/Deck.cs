@@ -310,16 +310,10 @@ public class Deck : MonoBehaviour
 
         // Position the hand container at the bottom right of the screen
         RectTransform rectTransform = handContainer.GetComponent<RectTransform>();
-        //rectTransform.anchorMin = new Vector2(1, 0); // Bottom-right corner
-        //rectTransform.anchorMax = new Vector2(1, 0); // Bottom-right corner
-        //rectTransform.pivot = new Vector2(1, 0); // Bottom-right corner
-        //rectTransform.anchoredPosition = new Vector2(-20, 20); // Offset for spacing from screen 
     }
 
     // Needed when inside of the level
     // We will assume no cards can be discarded directly from the deck to the discard pile
-    // otherwise make two methods, one to discard from hand, one from deck
-    // TODO: Adjust from generalized design to specifics
     public void DiscardCard(Card card)
     {
         if (HandCards.Contains(card))
