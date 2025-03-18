@@ -116,10 +116,27 @@ public class PlayerControls : MonoBehaviour
     public void SetDamageMultiplier(float multiplier)
     {
         damageMultiplier = multiplier;
+        Debug.Log($"Current damage multiplier set to: {damageMultiplier}");
     }
 
     private void Attack(int cardIndex)
     {
+        // Activates card effect
+        if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
+        {
+            // Access the CardData for the selected card
+            ScriptableCard scriptableCard = deck.HandCards[cardIndex].CardData;
+
+            if (scriptableCard != null)
+            {
+                scriptableCard.PlayCard(gameObject); // Use the target as needed
+            }
+            else
+            {
+                Debug.LogWarning("Selected card has no associated ScriptableCard data.");
+            }
+        }
+
         // Calculate the damage for this attack
         float currentDamage = damageAmount * damageMultiplier;
 

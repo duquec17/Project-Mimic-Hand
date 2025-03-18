@@ -25,14 +25,6 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     // Methods & Functions
 
-    public void PlayCard(GameObject target)
-    {
-        if (CardData.cardEffect != null)
-        {
-            CardData.cardEffect.ApplyEffect(target);
-        }
-    }
-
     // Set the relevant card data at runtime and update the card's UI
     public void SetUp(ScriptableCard data)
     {

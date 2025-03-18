@@ -26,7 +26,19 @@ public class ScriptableCard : ScriptableObject
     [field: SerializeField] public CardEffects cardEffect { get; private set; } // Refrences CardEffects.cs 
     [field: SerializeField] public CardBackgrounds CardBackgrounds { get; private set; }
 
+    public void PlayCard(GameObject target)
+    {
+        // Apply the effect (such as damage multiplier) to the player or enemy
+        if (cardEffect != null)
+        {
+            cardEffect.ApplyEffect(target); // Apply the effect when the card is played
+            Debug.Log("Card played: " + CardName);
+        }
+
+    }
 }
+
+
 
 public enum CardEffectType
 {
