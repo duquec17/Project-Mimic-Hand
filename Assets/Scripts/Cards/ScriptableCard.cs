@@ -23,6 +23,7 @@ public class ScriptableCard : ScriptableObject
     [field: SerializeField] public string CardType { get; private set; }
     [field: SerializeField] public Sprite Image { get; private set; }
     [field: SerializeField] public CardEffectType EffectType { get; private set; }
+    [field: SerializeField] public CardEffects Effect { get; private set; } // Refrences CardEffects.cs 
     [field: SerializeField] public CardBackgrounds CardBackgrounds { get; private set; }
 
 }

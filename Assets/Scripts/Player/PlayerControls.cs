@@ -31,6 +31,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private LayerMask attackableLayer;
     [SerializeField] private float damageAmount = 1f;
+    [SerializeField] private float damageMultiplier = 1f;
     private RaycastHit2D[] hits;
 
     [SerializeField] private Deck deck;
@@ -111,8 +112,17 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    // Method to apply the multiplier to the damage
+    public void SetDamageMultiplier(float multiplier)
+    {
+        damageMultiplier = multiplier;
+    }
+
     private void Attack(int cardIndex)
     {
+        // Calculate the damage for this attack
+        float currentDamage = damageAmount * damageMultiplier;
+
         // Creates a circle hit box that checks from enemies inside of it
         hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
         
@@ -123,9 +133,12 @@ public class PlayerControls : MonoBehaviour
             if (iDamageable != null)
             {
                 // Apply damage
-                iDamageable.Damage(damageAmount);
+                iDamageable.Damage(currentDamage);
             }
         }
+
+        // Reset Damage multiplier TODO: Adjust to reset at end of hand possibly?
+        damageMultiplier = 1f;
 
         // Removes the used card from the hand
         if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)

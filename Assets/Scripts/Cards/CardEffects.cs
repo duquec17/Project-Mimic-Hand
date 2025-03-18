@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardEffects : MonoBehaviour
+public abstract class CardEffects : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract void ApplyEffect(GameObject target); // Target can be anything (Player, enemy, etc.)
+}
 
-    // Update is called once per frame
-    void Update()
+[CreateAssetMenu (fileName = "DamageMultiplierEffect", menuName = "CardEffects/DamageMultiplierEffect")]
+public class DamageMultiplierEffect : CardEffects
+{
+    public float multiplier = 2f; // Multiplier for next attack
+    public override void ApplyEffect(GameObject target)
     {
-        
+        // Apply multipler to the player's attack
+        PlayerControls playerControls = target.GetComponent<PlayerControls>();
+
+        if (playerControls != null)
+        {
+            playerControls.SetDamageMultiplier(multiplier);
+        }
     }
 }
