@@ -6,8 +6,8 @@ using UnityEngine;
 public class BurnEffect : CardEffects
 {
     // Effect Variables
-    public float damagePercent = 0.01f; // 1% of max HP every second
-    public float duration = 5f; // Burn duration in seconds
+    public float burnDamagePercent = 0.01f; // 1% of max HP every second
+    public float burnDuration = 5f; // Burn duration in seconds
     public override void ApplyEffect(GameObject target)
     {
         // Checks to see if hit target has the script enemy health
@@ -16,7 +16,19 @@ public class BurnEffect : CardEffects
 
         if (enemyHealth != null)
         {
-            
+            enemyHealth.StartCoroutine(ApplyBurn(enemyHealth));
+        }
+    }
+
+    private IEnumerator ApplyBurn(EnemyHealth enemyHealth)
+    {
+        float timeElapsed = 0f;
+
+        while (timeElapsed < burnDuration)
+        {
+            enemyHealth.Damage(burnDamagePercent); // Apply burn damage
+            timeElapsed += 1f; // Wait for 1 second
+            yield return new WaitForSeconds(1f);
         }
     }
 }
