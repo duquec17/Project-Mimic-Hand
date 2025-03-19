@@ -12,7 +12,6 @@ public class BurnEffect : CardEffects
     public override void ApplyEffect(GameObject target)
     {
         Debug.Log("Target passed to BurnEffect: " + target.name);
-
         // Check for enemy health component
         EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
 
