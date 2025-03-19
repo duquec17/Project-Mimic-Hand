@@ -15,5 +15,9 @@ public class DamageMultiplierEffect : CardEffects
         {
             playerControls.SetDamageMultiplier(multiplier);
         }
+        else
+        {
+            Debug.Log("There is no player controls component on target");
+        }
     }
 }
