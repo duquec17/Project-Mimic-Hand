@@ -32,7 +32,6 @@ public class ScriptableCard : ScriptableObject
         if (cardEffect != null)
         {
             cardEffect.ApplyEffect(target); // Apply the effect when the card is played
-            Debug.Log("Card played: " + CardName);
         }
 
     }

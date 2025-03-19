@@ -129,7 +129,33 @@ public class PlayerControls : MonoBehaviour
 
             if (scriptableCard != null)
             {
-                scriptableCard.PlayCard(gameObject); // Use the target as needed
+                // Creates a circle hit box that checks from enemies inside of it
+                hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
+
+                // Assign default target to empty
+                GameObject target = null;
+
+                // Find the first valid target (enemy) in the hits
+                foreach (var hit in hits)
+                {
+                    IDamageable iDamageable = hit.collider.gameObject.GetComponent<IDamageable>();
+                    if (iDamageable != null)
+                    {
+                        target = hit.collider.gameObject; // Assign the target
+                        break;
+                    }
+                }
+
+                // When a target is found
+                if (target != null)
+                {
+                    Debug.Log($"Card {scriptableCard.CardName} played on target: {target.name}");
+                    scriptableCard.PlayCard(target); // Pass the target to the card
+                }
+                else
+                {
+                    Debug.LogWarning("No valid target found for the card effect.");
+                }
             }
             else
             {

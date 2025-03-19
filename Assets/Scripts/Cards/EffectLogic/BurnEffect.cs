@@ -6,29 +6,23 @@ using UnityEngine;
 public class BurnEffect : CardEffects
 {
     // Effect Variables
-    public float burnDamagePercent = 0.01f; // 1% of max HP every second
+    public float burnDamagePercent = 0.05f; // 5% of max HP every second
     public float burnDuration = 5f; // Burn duration in seconds
+
     public override void ApplyEffect(GameObject target)
     {
-        // Checks to see if hit target has the script enemy health
+        Debug.Log("Target passed to BurnEffect: " + target.name);
+
+        // Check for enemy health component
         EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
-        DummyHealth dummyHealth = target.GetComponent<DummyHealth>(); // TODO: Remove after checking that this works for dummy / adjust dummy to use enemy health & be a prefab
 
         if (enemyHealth != null)
         {
-            enemyHealth.StartCoroutine(ApplyBurn(enemyHealth));
-        }
-    }
-
-    private IEnumerator ApplyBurn(EnemyHealth enemyHealth)
-    {
-        float timeElapsed = 0f;
-
-        while (timeElapsed < burnDuration)
+            Debug.Log("BurnEffect applied to: " + target.name);
+            enemyHealth.ApplyBurn(burnDamagePercent, burnDuration); // Call the ApplyBurn method on EnemyHealth
+        } else
         {
-            enemyHealth.Damage(burnDamagePercent); // Apply burn damage
-            timeElapsed += 1f; // Wait for 1 second
-            yield return new WaitForSeconds(1f);
+            Debug.Log("Failed to Burn");
         }
     }
 }
