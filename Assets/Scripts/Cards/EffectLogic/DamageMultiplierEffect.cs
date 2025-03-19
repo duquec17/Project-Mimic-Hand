@@ -9,7 +9,7 @@ public class DamageMultiplierEffect : CardEffects
     public override void ApplyEffect(GameObject target)
     {
         // Apply multiplier to the player's attack
-        PlayerControls playerControls = target.GetComponent<PlayerControls>();
+        PlayerControls playerControls = GameObject.FindWithTag("Player").GetComponent<PlayerControls>();
 
         if (playerControls != null)
         {

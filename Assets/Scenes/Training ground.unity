@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989a9f2c3ede1c449516804010f1b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 99
+  maxHealth: 100
 --- !u!1 &255991880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95d536fc6b7ef24db3cd0fe6541dfdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 99
+  maxHealth: 100
 --- !u!50 &1871998740
 Rigidbody2D:
   serializedVersion: 4
@@ -2035,6 +2035,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9145044617915373791, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145044617915373791, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
