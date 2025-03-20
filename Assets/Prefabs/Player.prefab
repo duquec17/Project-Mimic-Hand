@@ -75,9 +75,10 @@ GameObject:
   - component: {fileID: 9145044617915373789}
   - component: {fileID: 9145044617915373788}
   - component: {fileID: 6395786106140405774}
+  - component: {fileID: 1907612174}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,8 +174,10 @@ MonoBehaviour:
   attackRange: 0.41
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   damageAmount: 1
+  damageMultiplier: 1
+  deck: {fileID: 0}
 --- !u!50 &9145044617915373788
 Rigidbody2D:
   serializedVersion: 4
@@ -222,3 +225,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1907612174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145044617915373791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967af5d0671e1054fadfe150f84d5af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
