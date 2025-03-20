@@ -18,6 +18,9 @@ public class ReDoHealth : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
     }
 
+    public float MaxHealth => maxHealth; // Public getter for maxHealth
+    public float CurrentHealth => currentHealth; // Public getter for currentHealth
+
     public void SetDamageReduction(float reductionAmount)
     {
         damageReduction = reductionAmount; // Set the new damage reduction multiplier
