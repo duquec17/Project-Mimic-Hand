@@ -23,7 +23,8 @@ public class ScriptableCard : ScriptableObject
     [field: SerializeField] public string CardType { get; private set; }
     [field: SerializeField] public Sprite Image { get; private set; }
     [field: SerializeField] public CardEffectType EffectType { get; private set; }
-    [field: SerializeField] public CardEffects cardEffect { get; private set; } // Refrences CardEffects.cs 
+    [field: SerializeField] public CardEffects cardEffect { get; private set; } // Refrences CardEffects.cs
+    [field: SerializeField] public StatusEffect statusEffect { get; private set; } // Refrences statusEffect.cs
     [field: SerializeField] public CardBackgrounds CardBackgrounds { get; private set; }
 
     public void PlayCard(GameObject target)
@@ -34,6 +35,19 @@ public class ScriptableCard : ScriptableObject
             cardEffect.ApplyEffect(target); // Apply the effect when the card is played
         }
 
+
+        if (statusEffect != null)
+        {
+            ReDoHealth targetHealth = target.GetComponent<ReDoHealth>();
+            if (targetHealth != null)
+            {
+                targetHealth.ApplyStatusEffect(statusEffect);
+            }
+            else
+            {
+                Debug.LogWarning($"Target {target.name} does not have a ReDoHealth component to apply status effects.");
+            }
+        }
     }
 }
 

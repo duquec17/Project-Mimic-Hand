@@ -58,8 +58,14 @@ public class ReDoHealth : MonoBehaviour, IDamageable
         for (int i = activeStatusEffects.Count - 1; i >= 0; i--)
         {
             var effect = activeStatusEffects[i];
+
+            // Reduce the duration of each effect
+            effect.duration -= Time.deltaTime;
+
+            // Process the tick effect if the effect is still active
             effect.TickEffect(this, Time.deltaTime);
 
+            // Remove effect if the duration has expired
             if (effect.duration <= 0)
             {
                 RemoveStatusEffect(effect);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [CreateAssetMenu(fileName = "BleedStatus", menuName = "StatusEffects/BleedStatus")]
+[CreateAssetMenu(fileName = "BleedStatus", menuName = "StatusEffects/BleedStatus")]
 public class BleedStatus : StatusEffect
 {
     // Bleed Effect Variables
@@ -19,6 +19,7 @@ public class BleedStatus : StatusEffect
     {
         Debug.Log(target.name + " is bleeding!");
         tickCount = 0; // Reset tick count when effect is applied
+        duration = maxTicks * tickInterval;
     }
 
     public override void TickEffect(ReDoHealth target, float deltaTime)
