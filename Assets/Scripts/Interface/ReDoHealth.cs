@@ -41,8 +41,9 @@ public class ReDoHealth : MonoBehaviour, IDamageable
     public void ApplyStatusEffect(StatusEffect statusEffect)
     {
         // Add status effect to the list and initialize it
-        activeStatusEffects.Add(statusEffect);
-        statusEffect.ApplyEffect(this);
+        var instance = Instantiate(statusEffect);
+        activeStatusEffects.Add(instance);
+        instance.ApplyEffect(this);
     }
 
     public void RemoveStatusEffect(StatusEffect statusEffect)
@@ -54,10 +55,15 @@ public class ReDoHealth : MonoBehaviour, IDamageable
 
     public void Update()
     {
-        // Update all active status effects
-        foreach (var statusEffect in activeStatusEffects)
+        for (int i = activeStatusEffects.Count - 1; i >= 0; i--)
         {
-            statusEffect.TickEffect(this, Time.deltaTime);
+            var effect = activeStatusEffects[i];
+            effect.TickEffect(this, Time.deltaTime);
+
+            if (effect.duration <= 0)
+            {
+                RemoveStatusEffect(effect);
+            }
         }
     }
 
