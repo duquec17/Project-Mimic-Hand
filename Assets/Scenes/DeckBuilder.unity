@@ -163,6 +163,8 @@ MonoBehaviour:
   cardCanvas: {fileID: 1942934696}
   deckPile: []
   discardPile: []
+  handContainer: {fileID: 0}
+  handLayoutGroup: {fileID: 0}
 --- !u!4 &346363944
 Transform:
   m_ObjectHideFlags: 0
