@@ -14,8 +14,8 @@ public abstract class StatsDisplay : MonoBehaviour
     {
         if(targetHealth == null || statsText == null)
         {
-            Debug.Log("Failed to assign stats");
-            return;
+            Debug.Log("Failed to assign stats or target dead");
+            return ;
         }
 
         // Retrieve stats and effects for display
