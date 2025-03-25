@@ -73,6 +73,11 @@ public class ReDoHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public List<StatusEffect> GetActiveEffects()
+    {
+        return activeStatusEffects;
+    }
+
     private void Die()
     {
         Debug.Log(gameObject.name + " has died.");
