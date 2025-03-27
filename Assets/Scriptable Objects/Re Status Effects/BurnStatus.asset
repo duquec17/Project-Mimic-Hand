@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73215df6ee88b143b647084f78fbeb0, type: 3}
   m_Name: BurnStatus
   m_EditorClassIdentifier: 
-  duration: 0
+  duration: 5

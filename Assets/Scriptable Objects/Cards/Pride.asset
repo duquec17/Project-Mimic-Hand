@@ -17,5 +17,6 @@ MonoBehaviour:
   <CardType>k__BackingField: Wild
   <Image>k__BackingField: {fileID: 21300000, guid: fded9c329d2581c48b1a7d625959a280, type: 3}
   <EffectType>k__BackingField: 3
-  <cardEffect>k__BackingField: {fileID: 11400000, guid: 456ba352f83db644fa4c3512a773a3d2, type: 2}
+  <cardEffect>k__BackingField: {fileID: 0}
+  <statusEffect>k__BackingField: {fileID: 11400000, guid: 1dd9fa584358c2a46ba95c8e47d229ef, type: 2}
   <CardBackgrounds>k__BackingField: 3
