@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /* Purpose:
  * Represents a card deck and also governs the discard pile and works in concordance with the Hand script.
@@ -32,7 +33,8 @@ public class Deck : MonoBehaviour
     [SerializeField] private Button startLevelButton; // References existing button in scene
 
 
-    [SerializeField] private Canvas cardCanvas;
+    [SerializeField] private Canvas cardCanvas; 
+    [SerializeField] private TextMeshProUGUI deckCounterText; // References the counter in the deck builder scene
 
     private Card selectedCard;
 
@@ -84,8 +86,10 @@ public class Deck : MonoBehaviour
 
             return ;
         }
+
         // we will instantiate the deck once, at the start of the game/level
         ClearCurrentDeck();
+        UpdateDeckCounter(); // This tells how many cards are currently in the deck
         InstantiateDeck(); // This fills the player's deck (will need to be an empty one that can be filled)
         PopulateDeckUI(); // This displays all selectable cards for the player
 
@@ -94,6 +98,12 @@ public class Deck : MonoBehaviour
         addButton.onClick.AddListener(AddCardToCurrentDeck); // Assigns function to add card button
         removeButton.onClick.AddListener(RemoveCardFromCurrentDeck); // Assigns function to add card button
         startLevelButton.onClick.AddListener(ChangeScene); // Assigns start level button the ability to change scene
+    }
+
+    private void UpdateDeckCounter()
+    {
+        int deckSize = currentDeck.CardsInCollection.Count;
+        deckCounterText.text = $"Select Cards Deck: {deckSize}"; // Update the text to show the current deck size
     }
 
     private void ClearCurrentDeck()
@@ -179,8 +189,8 @@ public class Deck : MonoBehaviour
         {
             ScriptableCard selectedCardData = selectedCard.CardData; // Grabs card data from selected card 
             currentDeck.AddCardToCollection(selectedCardData); // Adds card to empty deck
-
-            Debug.Log($"Added {selectedCardData.name} to the deck. Current deck size: {currentDeck.CardsInCollection.Count}");
+            UpdateDeckCounter();
+            //Debug.Log($"Added {selectedCardData.name} to the deck. Current deck size: {currentDeck.CardsInCollection.Count}");
 
             if (currentDeck.CardsInCollection.Count == 15)
             {
@@ -227,8 +237,8 @@ public class Deck : MonoBehaviour
         {
             ScriptableCard selectedCardData = selectedCard.CardData; // Grabs card data from selected card 
             currentDeck.RemoveCardFromCollection(selectedCardData); // Removes card to empty deck
-
-            Debug.Log($"Removed {selectedCardData.name} from deck. Current deck size: {currentDeck.CardsInCollection.Count}");
+            UpdateDeckCounter();
+            //Debug.Log($"Removed {selectedCardData.name} from deck. Current deck size: {currentDeck.CardsInCollection.Count}");
         }
     }
 
@@ -301,7 +311,8 @@ public class Deck : MonoBehaviour
             {
                 handContents += card.name + ", "; // Replace `card.name` with the relevant property of your Card class
             }
-            Debug.Log(handContents.TrimEnd(',', ' '));
+            
+            // Debug.Log(handContents.TrimEnd(',', ' '));
         }
         else
         {

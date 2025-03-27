@@ -17,4 +17,6 @@ MonoBehaviour:
   <CardType>k__BackingField: Debuff
   <Image>k__BackingField: {fileID: 21300000, guid: 8fcc696a4e275894fbc9512b938d582c, type: 3}
   <EffectType>k__BackingField: 2
+  <cardEffect>k__BackingField: {fileID: 0}
+  <statusEffect>k__BackingField: {fileID: 11400000, guid: 3804b29f93498124d9bf45e5f90adb24, type: 2}
   <CardBackgrounds>k__BackingField: 2

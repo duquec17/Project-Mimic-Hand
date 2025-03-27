@@ -23,8 +23,6 @@ public class Card : MonoBehaviour, IPointerClickHandler
     // Fields and Properties
     [field: SerializeField] public ScriptableCard CardData { get; private set; }
 
-   
-
     // Methods & Functions
 
     // Set the relevant card data at runtime and update the card's UI

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DummyHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float maxHealth = 3f;
+    [SerializeField] private float maxHealth = 100f;
 
     private float currentHealth;
 

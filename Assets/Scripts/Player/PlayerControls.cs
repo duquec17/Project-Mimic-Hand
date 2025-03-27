@@ -31,6 +31,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private LayerMask attackableLayer;
     [SerializeField] private float damageAmount = 1f;
+    [SerializeField] private float damageMultiplier = 1f;
     private RaycastHit2D[] hits;
 
     [SerializeField] private Deck deck;
@@ -111,8 +112,60 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    // Method to apply the multiplier to the damage
+    public void SetDamageMultiplier(float multiplier)
+    {
+        damageMultiplier = multiplier;
+        Debug.Log($"Current damage multiplier set to: {damageMultiplier}");
+    }
+
     private void Attack(int cardIndex)
     {
+        // Activates card effect
+        if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
+        {
+            // Access the CardData for the selected card
+            ScriptableCard scriptableCard = deck.HandCards[cardIndex].CardData;
+
+            if (scriptableCard != null)
+            {
+                // Creates a circle hit box that checks from enemies inside of it
+                hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
+
+                // Assign default target to empty
+                GameObject target = null;
+
+                // Find the first valid target (enemy) in the hits
+                foreach (var hit in hits)
+                {
+                    IDamageable iDamageable = hit.collider.gameObject.GetComponent<IDamageable>();
+                    if (iDamageable != null)
+                    {
+                        target = hit.collider.gameObject; // Assign the target
+                        break;
+                    }
+                }
+
+                // When a target is found
+                if (target != null)
+                {
+                    Debug.Log($"Card {scriptableCard.CardName} played on target: {target.name}");
+                    scriptableCard.PlayCard(target); // Pass the target to the card
+                }
+                else
+                {
+                    Debug.LogWarning("No valid target found for the card effect.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Selected card has no associated ScriptableCard data.");
+            }
+        }
+
+        // Calculate the damage for this attack
+        float currentDamage = damageAmount * damageMultiplier;
+
         // Creates a circle hit box that checks from enemies inside of it
         hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
         
@@ -123,9 +176,12 @@ public class PlayerControls : MonoBehaviour
             if (iDamageable != null)
             {
                 // Apply damage
-                iDamageable.Damage(damageAmount);
+                iDamageable.Damage(currentDamage);
             }
         }
+
+        // Reset Damage multiplier TODO: Adjust to reset at end of hand possibly?
+        damageMultiplier = 1f;
 
         // Removes the used card from the hand
         if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)

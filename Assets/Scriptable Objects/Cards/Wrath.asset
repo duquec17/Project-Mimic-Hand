@@ -17,4 +17,5 @@ MonoBehaviour:
   <CardType>k__BackingField: Dmg
   <Image>k__BackingField: {fileID: 21300000, guid: c64460a89980bba4cad80092e1b3e76a, type: 3}
   <EffectType>k__BackingField: 0
+  <cardEffect>k__BackingField: {fileID: 11400000, guid: 212ac8c030b0cad46a0f8cfa33969d08, type: 2}
   <CardBackgrounds>k__BackingField: 0
