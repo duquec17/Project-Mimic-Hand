@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReDoHealth : MonoBehaviour, IDamageable
 {
     // Character stat variables
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] public float maxHealth = 100f;
     private float currentHealth;
     //private float armor = 1f;
     private float damageReduction = 1f; // Default: no damage reduction

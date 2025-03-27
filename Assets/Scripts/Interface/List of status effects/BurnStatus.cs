@@ -14,7 +14,6 @@ public class BurnStatus : StatusEffect
     public override void ApplyEffect(ReDoHealth target)
     {
         //Debug.Log(target.name + " is burning!");
-        duration = 5f;
         timer = 0f; // Reset interval timer
     }
     public override void TickEffect(ReDoHealth target, float deltaTime)

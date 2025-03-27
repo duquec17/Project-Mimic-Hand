@@ -19,7 +19,7 @@ public class BleedStatus : StatusEffect
     {
         //Debug.Log(target.name + " is bleeding!");
         tickCount = 0; // Reset tick count when effect is applied
-        duration = maxTicks * tickInterval;
+        duration = maxTicks * tickInterval; // Set duration of effect to be 6 seconds
     }
 
     public override void TickEffect(ReDoHealth target, float deltaTime)

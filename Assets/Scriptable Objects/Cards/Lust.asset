@@ -17,4 +17,6 @@ MonoBehaviour:
   <CardType>k__BackingField: Buff
   <Image>k__BackingField: {fileID: 21300000, guid: 4e3c289758ada5e43b959032fdffc07a, type: 3}
   <EffectType>k__BackingField: 1
+  <cardEffect>k__BackingField: {fileID: 0}
+  <statusEffect>k__BackingField: {fileID: 11400000, guid: 1dd9fa584358c2a46ba95c8e47d229ef, type: 2}
   <CardBackgrounds>k__BackingField: 1
