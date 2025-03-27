@@ -13,7 +13,7 @@ public class BurnStatus : StatusEffect
     // Burn status overrides apply effect logic so that it may work
     public override void ApplyEffect(ReDoHealth target)
     {
-        Debug.Log(target.name + " is burning!");
+        //Debug.Log(target.name + " is burning!");
         duration = 5f;
         timer = 0f; // Reset interval timer
     }
@@ -28,7 +28,7 @@ public class BurnStatus : StatusEffect
             timer -= burnInterval; // Reset the interval timer
 
             // Calculate burn damage as 10% of max health
-            burnDamage = target.MaxHealth * 0.10f;
+            burnDamage = target.MaxHealth * 0.02f;
 
             // Apply damage
             target.Damage(burnDamage);
@@ -38,7 +38,7 @@ public class BurnStatus : StatusEffect
         }
         else
         {
-            Debug.Log("Failed to burn " + duration);
+            //Debug.Log("Failed to burn " + duration);
         }
 
         // Reduce remaining duration

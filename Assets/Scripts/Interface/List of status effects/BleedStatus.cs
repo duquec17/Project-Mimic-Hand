@@ -17,7 +17,7 @@ public class BleedStatus : StatusEffect
     // Bleed status overrides apply effect logic so that it may work
     public override void ApplyEffect(ReDoHealth target)
     {
-        Debug.Log(target.name + " is bleeding!");
+        //Debug.Log(target.name + " is bleeding!");
         tickCount = 0; // Reset tick count when effect is applied
         duration = maxTicks * tickInterval;
     }
