@@ -11,11 +11,24 @@ public class ChaseState : IEnemyState
 
     public void UpdateState(EnemyAI enemy)
     {
-        // Check to see if player has left range
-        if (Vector3.Distance(enemy.transform.position, enemy.Player.position) >= 6f)
+        // Switch to attack state if close enough
+        if (enemy.DistanceToPlayer <= 1f)
         {
-            enemy.SetState(new ChaseState()); // Switch back to idle state
+            enemy.SetState(new AttackState());
         }
+
+        // Switch to idle state if player has left range
+        if (enemy.DistanceToPlayer >= 6f)
+        {
+            enemy.SetState(new IdleState());
+        }
+
+        // Move toward the player
+        enemy.transform.position = Vector3.MoveTowards(
+            enemy.transform.position,
+            enemy.Player.position,
+            enemy.enemySpeed * Time.deltaTime
+        );
     }
 
     public void ExitState(EnemyAI enemy)

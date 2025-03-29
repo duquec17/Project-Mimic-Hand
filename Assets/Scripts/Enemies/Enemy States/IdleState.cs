@@ -11,7 +11,7 @@ public class IdleState : IEnemyState
 
     public void UpdateState(EnemyAI enemy)
     {
-        if (Vector3.Distance(enemy.transform.position, enemy.Player.position) <= 3f)
+        if (enemy.DistanceToPlayer <= 3f)
         {
             enemy.SetState(new ChaseState()); // Switch to Chase
         }

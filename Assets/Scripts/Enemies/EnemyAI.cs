@@ -24,6 +24,8 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     public Transform Player => player;
     private ReDoHealth healthComponent;
+    // Public property to access the distance to the player
+    public float DistanceToPlayer => Vector3.Distance(transform.position, Player.position);
 
     // Initialize variables for enemy to then later use
     void Start()

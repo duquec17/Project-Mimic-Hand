@@ -6,7 +6,7 @@ using UnityEngine;
 public class EoaStatus : StatusEffect
 {
     // End of all Effect Variables
-    private float timer = 0f;
+    //private float timer = 0f;
     private float eoaPercent = 0.10f;
     private float eoaDamage;
 
