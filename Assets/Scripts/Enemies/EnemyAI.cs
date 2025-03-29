@@ -20,12 +20,22 @@ public class EnemyAI : MonoBehaviour
     
     [SerializeField] private float enemyDamage = 1f;
     [SerializeField] private float enemyDamageMultiplier = 1f;
-    
+    [SerializeField] private float attackCooldown = 1.5f; // Centralized cooldown
+    private float attackTimer = 0f; // Centralized timer
+
     private Transform player;
     public Transform Player => player;
     private ReDoHealth healthComponent;
+
     // Public property to access the distance to the player
     public float DistanceToPlayer => Vector3.Distance(transform.position, Player.position);
+    public float EnemyDamage => enemyDamage; // Getter for enemy damage
+    public float AttackCooldown => attackCooldown; // Getter for cooldown
+    public float AttackTimer
+    {
+        get => attackTimer;
+        set => attackTimer = value; // Getter/Setter for timer
+    }
 
     // Initialize variables for enemy to then later use
     void Start()
@@ -39,7 +49,8 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        currentState.UpdateState(this);
+        attackTimer -= Time.deltaTime; // Update timer globally
+        currentState.UpdateState(this); // Update the current state 
     }
 
     public void SetState(IEnemyState newState)
