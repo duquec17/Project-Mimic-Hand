@@ -23,13 +23,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float attackCooldown = 1.5f; // Centralized cooldown
     private float attackTimer = 0f; // Centralized timer
 
-    private Transform player;
+    private Transform player; // Track what is considered player and used for certain logic
     public Transform Player => player;
     private ReDoHealth healthComponent;
 
     // Public property to access the distance to the player
     public float DistanceToPlayer => Vector3.Distance(transform.position, Player.position);
     public float EnemyDamage => enemyDamage; // Getter for enemy damage
+    public float EnemyDamageMultiplier => enemyDamageMultiplier;
     public float AttackCooldown => attackCooldown; // Getter for cooldown
     public float AttackTimer
     {

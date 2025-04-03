@@ -23,6 +23,13 @@ public class AttackState : IEnemyState
         {
             enemy.SetState(new IdleState());
         }
+
+        // Attack logic
+        if (enemy.AttackTimer <= 0f)
+        {
+            PerformAttack(enemy);
+            enemy.AttackTimer = enemy.AttackCooldown; // Reset timer
+        }
     }
 
     public void ExitState(EnemyAI enemy)
@@ -30,4 +37,12 @@ public class AttackState : IEnemyState
         Debug.Log($"{enemy.name} exited Attack State.");
     }
 
+    private void PerformAttack(EnemyAI enemy)
+    {
+        Debug.Log($"{enemy.name} attacks!");
+        if (enemy.Player.TryGetComponent<ReDoHealth>(out ReDoHealth playerHealth))
+        {
+            playerHealth.Damage(enemy.EnemyDamage * enemy.EnemyDamageMultiplier);
+        }
+    }
 }
