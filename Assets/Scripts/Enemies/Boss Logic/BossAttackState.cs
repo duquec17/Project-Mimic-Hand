@@ -16,6 +16,13 @@ public class BossAttackState : IEnemyState
     {
         if (!(enemy is BossEnemyAI boss)) return; // Ensure that only boss uses this state
 
+        // Ensure player is not null before checking distance
+        if (enemy.Player == null)
+        {
+            Debug.LogWarning("Player reference is missing in BossAttackState.");
+            return;
+        }
+
         // Switch to Chase if player moves out of attack range
         if (enemy.DistanceToPlayer > 6f)
         {

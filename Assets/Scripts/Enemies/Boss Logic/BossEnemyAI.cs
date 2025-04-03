@@ -9,8 +9,9 @@ public class BossEnemyAI : EnemyAI
     [SerializeField] private float projectileSpeed;
 
     // Override start to ensure boss is in correct state
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         SetState(new BossAttackState());
     }
 

@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour
     private ReDoHealth healthComponent;
 
     // Public property to access the distance to the player
-    public float DistanceToPlayer => Vector3.Distance(transform.position, Player.position);
+    public float DistanceToPlayer => player != null ? Vector3.Distance(transform.position, Player.position) : Mathf.Infinity;
     public float EnemyDamage => enemyDamage; // Getter for enemy damage
     public float EnemyDamageMultiplier => enemyDamageMultiplier;
     public float AttackCooldown => attackCooldown; // Getter for cooldown
@@ -39,10 +39,20 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Initialize variables for enemy to then later use
-    void Start()
+    protected virtual void Start()
     {
-        // Assign player variable to have interactions with enemy
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // Assign player variable safely
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+            Debug.Log($" Player successfully assigned to {gameObject.name}.");
+        }
+        else
+        {
+            Debug.LogError("Player not found! Ensure Player has the correct tag.");
+        }
+
         healthComponent = GetComponent<ReDoHealth>(); // Possibly add player. to GC to make sure it gets the right version of RDH
         
         SetState(new IdleState());
