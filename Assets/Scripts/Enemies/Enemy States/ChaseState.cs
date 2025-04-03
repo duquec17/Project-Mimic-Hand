@@ -12,13 +12,13 @@ public class ChaseState : IEnemyState
     public void UpdateState(EnemyAI enemy)
     {
         // Switch to attack state if close enough
-        if (enemy.DistanceToPlayer <= 1f)
+        if (enemy.DistanceToPlayer <= enemy.AttackRange)
         {
             enemy.SetState(new AttackState());
         }
 
         // Switch to idle state if player has left range
-        if (enemy.DistanceToPlayer >= 6f)
+        if (enemy.DistanceToPlayer >= enemy.IdleRange)
         {
             enemy.SetState(new IdleState());
         }

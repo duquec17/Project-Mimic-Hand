@@ -21,6 +21,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float enemyDamage = 1f;
     [SerializeField] private float enemyDamageMultiplier = 1f;
     [SerializeField] private float attackCooldown = 1.5f; // Centralized cooldown
+    [SerializeField] private float attackRange = 6f;
+    [SerializeField] private float chaseRange = 10f;
+    [SerializeField] private float idleRange = 12f;
     private float attackTimer = 0f; // Centralized timer
 
     private Transform player; // Track what is considered player and used for certain logic
@@ -31,7 +34,10 @@ public class EnemyAI : MonoBehaviour
     public float DistanceToPlayer => player != null ? Vector3.Distance(transform.position, Player.position) : Mathf.Infinity;
     public float EnemyDamage => enemyDamage; // Getter for enemy damage
     public float EnemyDamageMultiplier => enemyDamageMultiplier;
-    public float AttackCooldown => attackCooldown; // Getter for cooldown
+    public float AttackCooldown => attackCooldown; 
+    public float AttackRange => attackRange;
+    public float ChaseRange => chaseRange;
+    public float IdleRange => idleRange;
     public float AttackTimer
     {
         get => attackTimer;

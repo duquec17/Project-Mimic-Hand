@@ -15,6 +15,7 @@ public class BossAttackState : IEnemyState
     public void UpdateState(EnemyAI enemy)
     {
         if (!(enemy is BossEnemyAI boss)) return; // Ensure that only boss uses this state
+            
 
         // Ensure player is not null before checking distance
         if (enemy.Player == null)
