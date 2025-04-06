@@ -25,7 +25,7 @@ public class BossEnemyAI : EnemyAI
         }
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
         if (rb != null)
         {
