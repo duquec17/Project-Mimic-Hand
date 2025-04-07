@@ -11,4 +11,5 @@ public class EnemySpike : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer; // For color change might remove
 
     private bool isActive = false;
+
 }
