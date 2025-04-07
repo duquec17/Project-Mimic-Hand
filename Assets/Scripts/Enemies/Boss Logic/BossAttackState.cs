@@ -9,7 +9,13 @@ public class BossAttackState : IEnemyState
     public void EnterState(EnemyAI enemy)
     {
         Debug.Log($"{enemy.name} entered Boss Attack State.");
-        enemy.AttackTimer = attackCooldown; // Set initial cooldown
+
+        if (enemy is BossEnemyAI boss)
+        {
+            boss.FireProjectile(); // Call Boss's projectile attack function to fire immediately
+            enemy.AttackTimer = attackCooldown; // Set initial cooldown
+            enemy.stateLockTimer = 2.5f;
+        }
     }
 
     public void UpdateState(EnemyAI enemy)
@@ -25,17 +31,18 @@ public class BossAttackState : IEnemyState
         }
 
         // Switch to Chase if player moves out of attack range
-        if (enemy.DistanceToPlayer > 6f)
+        if (enemy.canChangeState && enemy.DistanceToPlayer > 6f)
         {
             enemy.SetState(new ChaseState());
             return;
         }
 
         // Countdown and attack when ready
-        if (enemy.AttackTimer <= 0f)
+        if (enemy.AttackTimer <= 0f && enemy.canChangeState)
         {
             boss.FireProjectile(); // Call Boss's projectile attack function
             enemy.AttackTimer = attackCooldown; // Reset timer
+            //enemy.stateLockTimer = 2.5f;
         }
     }
 

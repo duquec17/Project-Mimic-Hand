@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 12644587}
   - component: {fileID: 12644588}
+  - component: {fileID: 12644589}
   m_Layer: 0
   m_Name: f6vYci_0
   m_TagString: Untagged
@@ -207,6 +208,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &12644589
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12644586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f5de8ad84d4aed84ab95734e22bf70bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &81859570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,6 +2563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d240bfc49dd34944190573f8cbb21ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateLockTimer: 0
   enemySpeed: 2.6
   enemyJump: 0
   enemyDamage: 1
@@ -2552,7 +2574,7 @@ MonoBehaviour:
   idleRange: 12
   projectilePrefab: {fileID: 2208555759051375744, guid: d3e5d21907aeacf4b90bb78d3bc69e12, type: 3}
   firePoint: {fileID: 142940069}
-  projectileSpeed: 2
+  projectileSpeed: 4.01
 --- !u!1001 &9145044619343374226
 PrefabInstance:
   m_ObjectHideFlags: 0

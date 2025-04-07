@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
 {
     // Enemy Ai Variable List
     public IEnemyState currentState;
+    public float stateLockTimer = 0f;
+    public bool canChangeState => stateLockTimer <= 0f;
     public float enemySpeed;
     public float enemyJump;
     
@@ -67,6 +69,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         attackTimer -= Time.deltaTime; // Update timer globally
+        stateLockTimer -= Time.deltaTime; // Update state timer globally
         currentState.UpdateState(this); // Update the current state 
     }
 

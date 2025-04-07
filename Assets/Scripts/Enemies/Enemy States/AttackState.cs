@@ -13,7 +13,7 @@ public class AttackState : IEnemyState
     public void UpdateState(EnemyAI enemy)
     {
         // Switch to chase state if player is in range of it, but not attack range
-        if (enemy.DistanceToPlayer <= enemy.ChaseRange)
+        if (enemy.canChangeState && enemy.DistanceToPlayer <= enemy.ChaseRange)
         {
             enemy.SetState(new ChaseState());
         }
