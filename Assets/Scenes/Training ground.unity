@@ -2574,7 +2574,8 @@ MonoBehaviour:
   idleRange: 12
   projectilePrefab: {fileID: 2208555759051375744, guid: d3e5d21907aeacf4b90bb78d3bc69e12, type: 3}
   firePoint: {fileID: 142940069}
-  projectileSpeed: 4.01
+  projectileSpeed: 4
+  spikePrefab: {fileID: 2208555759051375744, guid: 222658ecaa6f6aa45801f6927736cb3b, type: 3}
 --- !u!1001 &9145044619343374226
 PrefabInstance:
   m_ObjectHideFlags: 0
