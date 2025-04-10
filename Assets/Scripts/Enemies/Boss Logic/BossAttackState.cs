@@ -13,6 +13,7 @@ public class BossAttackState : IEnemyState
         if (enemy is BossEnemyAI boss)
         {
             boss.FireProjectile(); // Call Boss's projectile attack function to fire immediately
+            boss.SummonSpikes(); // Call Boss's spike attack function to begin
             enemy.AttackTimer = attackCooldown; // Set initial cooldown
             enemy.stateLockTimer = 2.5f;
         }
