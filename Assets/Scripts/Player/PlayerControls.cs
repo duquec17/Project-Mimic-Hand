@@ -17,7 +17,7 @@ using UnityEngine;
  */
 public class PlayerControls : MonoBehaviour
 {
-    // Player Variable List
+    // Player movement variable List
     public float moveSpeed;
     public float jumpForce;
     
@@ -27,14 +27,18 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
+    // Player attack variables
     [SerializeField] private Transform attackTransform;
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private LayerMask attackableLayer;
     [SerializeField] private float damageAmount = 1f;
     [SerializeField] private float damageMultiplier = 1f;
     private RaycastHit2D[] hits;
-
+    
+    // Reference to the deck
     [SerializeField] private Deck deck;
+    // Reference to TextBoxManager
+    [SerializeField] private TextBoxManager textBoxManager;
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +91,11 @@ public class PlayerControls : MonoBehaviour
                 if (cardIndex != -1)
                 {
                     Attack(cardIndex);
+
+                    if (textBoxManager != null)
+                    {
+                        textBoxManager.LogPlayerAction($"Player used card {cardIndex + 1}.");
+                    }
                 }
             }
         }
@@ -151,6 +160,11 @@ public class PlayerControls : MonoBehaviour
                 {
                     Debug.Log($"Card {scriptableCard.CardName} played on target: {target.name}");
                     scriptableCard.PlayCard(target); // Pass the target to the card
+
+                    if (textBoxManager != null)
+                    {
+                        textBoxManager.LogPlayerAction($"Card {scriptableCard.CardName} used on {target.name}.");
+                    }
                 }
                 else
                 {

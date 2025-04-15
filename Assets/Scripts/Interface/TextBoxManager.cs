@@ -5,28 +5,40 @@ using TMPro;
 
 public class TextBoxManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI instructionTextBox; // The text box for displaying instructions
-    [SerializeField] private TextMeshProUGUI actionLogTextBox; // The text box for displaying action logs
+    [SerializeField] private TextMeshProUGUI textBox; // Single text box for both instructions and action logs
     private Queue<string> actionLogQueue = new Queue<string>(); // Queue to store recent actions
-    private const int MaxLogEntries = 5; // Limit the number of displayed actions
+    private const int MaxLogEntries = 3; // Limit the number of displayed actions
 
     private void Start()
     {
-        displayInstruction(instructionTextBox.text);
-        //actionLogTextBox.text = "";
+        DisplayInstructions("Use the AWSD keys to move in all directions and avoid attacks");
     }
 
-    public void displayInstruction(string instructions)
+    public void DisplayInstructions(string instructions)
     {
-        instructionTextBox.text = instructions;
-        instructionTextBox.text = "Use the AWSD keys to move in all directions and avoid attacks";
-        StartCoroutine(HideInstructionsAfterDelay(5)); // Hides instructions after 5 seconds
+        // Display instructions in the text box
+        textBox.text = instructions;
+
+        // Check if any of the W, A, S, or D keys are pressed
+        StartCoroutine(WaitForPlayerInput());
+    }
+
+    private IEnumerator WaitForPlayerInput()
+    {
+        // Wait until one of the AWSD keys is pressed
+        yield return new WaitUntil(() => Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
+
+        // Hide instructions after 5 seconds
+        StartCoroutine(HideInstructionsAfterDelay(5));
     }
 
     private IEnumerator HideInstructionsAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        instructionTextBox.text = ""; // Clear the instructions
+
+        // Clear instructions and update the log
+        textBox.text = "";
+        LogPlayerAction("Player read the instructions.");
     }
 
     // Method to log a player's action
@@ -41,12 +53,13 @@ public class TextBoxManager : MonoBehaviour
             actionLogQueue.Dequeue();
         }
 
-        // Update the log text box
+        // Update the text box with the action log
         UpdateActionLogText();
     }
 
     private void UpdateActionLogText()
     {
-        actionLogTextBox.text = string.Join("\n", actionLogQueue.ToArray());
+        // Combine all action logs into a single string and display in the text box
+        textBox.text = string.Join("\n", actionLogQueue.ToArray());
     }
 }
