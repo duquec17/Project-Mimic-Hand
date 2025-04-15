@@ -38,7 +38,7 @@ public class TextBoxManager : MonoBehaviour
 
         // Clear instructions and update the log
         textBox.text = "";
-        LogPlayerAction("Player read the instructions.");
+        LogPlayerAction("Attack the boss by pressing the U, I, O, P, and J keys at close range. Each will use a card from left to right, removing it from the hand");
     }
 
     // Method to log a player's action
