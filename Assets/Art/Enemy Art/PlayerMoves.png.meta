@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f919ab1816575bb47bab9940130ce531
+guid: b6d9cca5f0ced10428156d8c2a4ea7d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -120,10 +120,10 @@ TextureImporter:
       name: Retro Impact Effect Pack 2 B_0
       rect:
         serializedVersion: 2
-        x: 347
-        y: 529
-        width: 39
-        height: 28
+        x: 11
+        y: 777
+        width: 47
+        height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: Retro Impact Effect Pack 2 B_1
       rect:
         serializedVersion: 2
-        x: 408
-        y: 527
-        width: 39
-        height: 32
+        x: 74
+        y: 775
+        width: 45
+        height: 47
       alignment: 9
       pivot: {x: 0.4824487, y: 0.47153783}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: Retro Impact Effect Pack 2 B_2
       rect:
         serializedVersion: 2
-        x: 465
-        y: 525
-        width: 47
-        height: 38
+        x: 140
+        y: 775
+        width: 46
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: Retro Impact Effect Pack 2 B_3
       rect:
         serializedVersion: 2
-        x: 532
-        y: 522
+        x: 201
+        y: 772
         width: 48
-        height: 41
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,27 +196,6 @@ TextureImporter:
       bones: []
       spriteID: e63c1140e19d6a84ca621e9ee258257b
       internalID: 862457946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Retro Impact Effect Pack 2 B_4
-      rect:
-        serializedVersion: 2
-        x: 580
-        y: 525
-        width: 60
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8a5f7d70f650b34298a2504faac3d7c
-      internalID: 1207103726
       vertices: []
       indices: 
       edges: []

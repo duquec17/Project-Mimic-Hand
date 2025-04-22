@@ -26,6 +26,7 @@ public class PlayerControls : MonoBehaviour
     
     private Rigidbody2D rb;
     private bool isGrounded;
+    private Animator animator;
 
     // Player attack variables
     [SerializeField] private Transform attackTransform;
@@ -130,6 +131,11 @@ public class PlayerControls : MonoBehaviour
 
     private void Attack(int cardIndex)
     {
+        if (animator != null)
+        {
+            
+        }
+
         // Activates card effect
         if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
         {
