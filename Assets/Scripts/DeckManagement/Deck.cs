@@ -102,8 +102,11 @@ public class Deck : MonoBehaviour
 
     private void UpdateDeckCounter()
     {
+        // Deck Counter variables
         int deckSize = currentDeck.CardsInCollection.Count;
-        deckCounterText.text = $"Select Cards Deck: {deckSize}"; // Update the text to show the current deck size
+        string message = $"Click on cards to add them until 15 non-duplicates have been selected\n Deck: {deckSize}";
+
+        deckCounterText.text = message; // Update the text to show the current deck size
     }
 
     private void ClearCurrentDeck()

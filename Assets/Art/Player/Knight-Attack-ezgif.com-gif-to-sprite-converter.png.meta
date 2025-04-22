@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f919ab1816575bb47bab9940130ce531
+guid: 12437620b4ae31c41bfe805f5c14d631
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,106 +117,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Retro Impact Effect Pack 2 B_0
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_0
       rect:
         serializedVersion: 2
-        x: 347
-        y: 529
-        width: 39
-        height: 28
+        x: 163
+        y: 381
+        width: 172
+        height: 209
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6abd3831de1e96479f33afc35c7f164
-      internalID: -260996374
+      spriteID: 11c81b85c4deb524e9a656cee7fc251b
+      internalID: -1486902759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Retro Impact Effect Pack 2 B_1
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_1
       rect:
         serializedVersion: 2
-        x: 408
-        y: 527
-        width: 39
-        height: 32
-      alignment: 9
-      pivot: {x: 0.4824487, y: 0.47153783}
+        x: 573
+        y: 385
+        width: 209
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f777c832767ef947b14882afe45c799
-      internalID: 351862021
+      spriteID: c9746b5c400310649802fae8ae439d1b
+      internalID: 1793797927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Retro Impact Effect Pack 2 B_2
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_2
       rect:
         serializedVersion: 2
-        x: 465
-        y: 525
-        width: 47
-        height: 38
+        x: 973
+        y: 385
+        width: 200
+        height: 293
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98cc72302d8a43940b3ad3feddfc7048
-      internalID: 710932114
+      spriteID: 7be91ffd3a5bfad4197555b147ac8bf1
+      internalID: -717893391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Retro Impact Effect Pack 2 B_3
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_3
       rect:
         serializedVersion: 2
-        x: 532
-        y: 522
-        width: 48
-        height: 41
+        x: 1373
+        y: 385
+        width: 176
+        height: 326
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e63c1140e19d6a84ca621e9ee258257b
-      internalID: 862457946
+      spriteID: ad0c7de099acaf5409776b01b823de65
+      internalID: 891009688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Retro Impact Effect Pack 2 B_4
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_4
       rect:
         serializedVersion: 2
-        x: 580
-        y: 525
-        width: 60
-        height: 37
+        x: 1614
+        y: 372
+        width: 307
+        height: 274
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8a5f7d70f650b34298a2504faac3d7c
-      internalID: 1207103726
+      spriteID: 84a54954524d5e0439bcdbe81dd55e1b
+      internalID: -158473181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_5
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 325
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9713c5c6749f7a34c9833d0924aad78c
+      internalID: -721587732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_6
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 4
+        width: 274
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca7b786f64eff64eb6f889f73b39aea
+      internalID: 1475160113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight-Attack-ezgif.com-gif-to-sprite-converter_7
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 0
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e6484487d014c4599af7d25cb58c83
+      internalID: -198258782
       vertices: []
       indices: 
       edges: []
@@ -232,11 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Retro Impact Effect Pack 2 B_2: 710932114
-      Retro Impact Effect Pack 2 B_0: -260996374
-      Retro Impact Effect Pack 2 B_4: 1207103726
-      Retro Impact Effect Pack 2 B_1: 351862021
-      Retro Impact Effect Pack 2 B_3: 862457946
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_7: -198258782
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_0: -1486902759
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_3: 891009688
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_2: -717893391
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_4: -158473181
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_5: -721587732
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_6: 1475160113
+      Knight-Attack-ezgif.com-gif-to-sprite-converter_1: 1793797927
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

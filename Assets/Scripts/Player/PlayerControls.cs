@@ -17,7 +17,7 @@ using UnityEngine;
  */
 public class PlayerControls : MonoBehaviour
 {
-    // Player Variable List
+    // Player movement variable List
     public float moveSpeed;
     public float jumpForce;
     
@@ -27,19 +27,30 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
+    // Player attack variables
     [SerializeField] private Transform attackTransform;
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private LayerMask attackableLayer;
     [SerializeField] private float damageAmount = 1f;
     [SerializeField] private float damageMultiplier = 1f;
     private RaycastHit2D[] hits;
-
+    
+    // Reference to the deck
     [SerializeField] private Deck deck;
+    // Reference to TextBoxManager
+    [SerializeField] private TextBoxManager textBoxManager;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        // Set the attackTransform sprite to be invisible on start
+        SpriteRenderer attackSprite = attackTransform.GetComponent<SpriteRenderer>();
+        if (attackSprite != null)
+        {
+            attackSprite.enabled = false;
+        }
 
         if (deck == null)
         {
@@ -87,6 +98,11 @@ public class PlayerControls : MonoBehaviour
                 if (cardIndex != -1)
                 {
                     Attack(cardIndex);
+
+                    if (textBoxManager != null)
+                    {
+                        textBoxManager.LogPlayerAction($"Player used card {cardIndex + 1}.");
+                    }
                 }
             }
         }
@@ -121,6 +137,9 @@ public class PlayerControls : MonoBehaviour
 
     private void Attack(int cardIndex)
     {
+        // Show the sprite for the attackTransform object
+        StartCoroutine(ShowAttackSprite());
+
         // Activates card effect
         if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
         {
@@ -151,6 +170,11 @@ public class PlayerControls : MonoBehaviour
                 {
                     Debug.Log($"Card {scriptableCard.CardName} played on target: {target.name}");
                     scriptableCard.PlayCard(target); // Pass the target to the card
+
+                    if (textBoxManager != null)
+                    {
+                        textBoxManager.LogPlayerAction($"Card {scriptableCard.CardName} used on {target.name}.");
+                    }
                 }
                 else
                 {
@@ -216,5 +240,21 @@ public class PlayerControls : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
+    }
+
+    private IEnumerator ShowAttackSprite()
+    {
+        SpriteRenderer spriteRenderer = attackTransform.GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true; // Make the sprite visible
+            yield return new WaitForSeconds(0.5f); // Wait for 2 seconds
+            spriteRenderer.enabled = false; // Make the sprite invisible
+        }
+        else
+        {
+            Debug.LogWarning("No SpriteRenderer found on the attackTransform object.");
+        }
     }
 }
