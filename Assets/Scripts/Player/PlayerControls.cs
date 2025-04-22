@@ -26,7 +26,6 @@ public class PlayerControls : MonoBehaviour
     
     private Rigidbody2D rb;
     private bool isGrounded;
-    private Animator animator;
 
     // Player attack variables
     [SerializeField] private Transform attackTransform;
@@ -45,6 +44,13 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        // Set the attackTransform sprite to be invisible on start
+        SpriteRenderer attackSprite = attackTransform.GetComponent<SpriteRenderer>();
+        if (attackSprite != null)
+        {
+            attackSprite.enabled = false;
+        }
 
         if (deck == null)
         {
@@ -131,10 +137,8 @@ public class PlayerControls : MonoBehaviour
 
     private void Attack(int cardIndex)
     {
-        if (animator != null)
-        {
-            
-        }
+        // Show the sprite for the attackTransform object
+        StartCoroutine(ShowAttackSprite());
 
         // Activates card effect
         if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
@@ -236,5 +240,21 @@ public class PlayerControls : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
+    }
+
+    private IEnumerator ShowAttackSprite()
+    {
+        SpriteRenderer spriteRenderer = attackTransform.GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true; // Make the sprite visible
+            yield return new WaitForSeconds(0.5f); // Wait for 2 seconds
+            spriteRenderer.enabled = false; // Make the sprite invisible
+        }
+        else
+        {
+            Debug.LogWarning("No SpriteRenderer found on the attackTransform object.");
+        }
     }
 }
