@@ -33,10 +33,15 @@ public class StartMenuController : MonoBehaviour
 
     // Tutorial Menu Specific
     public TextMeshProUGUI phase_Text;
+    public Sprite[] refImage;
+    public Image targetImage;
+
     public void OnNextClick()
     {
         phase_Text.text = "Phase 2: In-Level " +
             "\n- On entering the level, player moves using the AWSD key to go left, up, down, and right.";
+        
+        targetImage.sprite = refImage[1];
     }
 
     public void OnPreviousClick()
@@ -46,6 +51,8 @@ public class StartMenuController : MonoBehaviour
             "\n- Each card has a unique effect (in-development)." +
             "\n- Once all 15 are selected the level can be started." +
             "\n- Each card is used alongside an attack.";
+
+        targetImage.sprite = refImage[0];
     }
 
     public void OnMenuClick()
