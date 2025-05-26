@@ -35,17 +35,24 @@ public class CreditMenuController : MonoBehaviour
     public TextMeshProUGUI phase_Text;
     public Sprite[] refImage;
     public Image targetImage;
+    public int i;
 
     public void OnNextClick()
     {
         // Change image to next one
-        targetImage.sprite = refImage[1];
+        targetImage.sprite = refImage[i+1];
+        i++;
     }
 
     public void OnPreviousClick()
     {
         // Change image to previous one
-        targetImage.sprite = refImage[0];
+        if (i > 0)
+        {
+            targetImage.sprite = refImage[i-1];
+            i--;
+        }
+        
     }
 
     public void OnMenuClick()

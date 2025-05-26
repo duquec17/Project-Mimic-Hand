@@ -1050,7 +1050,9 @@ MonoBehaviour:
   refImage:
   - {fileID: 21300000, guid: 6dcd73fb0d6acd94cad4a14f88e8f83e, type: 3}
   - {fileID: 21300000, guid: 16efed984fdf3e74eb10ff326e45c072, type: 3}
+  - {fileID: 21300000, guid: 166323cf87c4f5c4abfa6da9e27885cf, type: 3}
   targetImage: {fileID: 512512166}
+  i: 0
 --- !u!1 &772709207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1098,8 @@ MonoBehaviour:
 
     - "Fantasy Pixel Art Asset Pack" by TeamGriffin
 
-    - '
+    -
+    "Agis Free with total 15 frames of animation" by Papoy Core'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
