@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 45920449}
   - component: {fileID: 45920448}
   m_Layer: 5
-  m_Name: Tutorial Box
+  m_Name: Credit Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 714364577}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
         m_MethodName: OnMenuClick
         m_Mode: 1
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 714364577}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
         m_MethodName: OnNextClick
         m_Mode: 1
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba86d45813f38e042adbe157593699e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6dcd73fb0d6acd94cad4a14f88e8f83e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 714364580}
   - component: {fileID: 714364579}
   - component: {fileID: 714364578}
-  - component: {fileID: 714364577}
+  - component: {fileID: 714364582}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -947,23 +947,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &714364577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714364576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b88f75a917442d4582ad7e2ce715491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phase_Text: {fileID: 772709208}
-  refImage:
-  - {fileID: 21300000, guid: ba86d45813f38e042adbe157593699e9, type: 3}
-  - {fileID: 21300000, guid: 14267a548a3d39f4abc02e6f2c9e3186, type: 3}
-  targetImage: {fileID: 512512166}
 --- !u!114 &714364578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1034,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &714364582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714364576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62192572420c3084fbacce5315ab520b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phase_Text: {fileID: 772709208}
+  refImage:
+  - {fileID: 21300000, guid: 6dcd73fb0d6acd94cad4a14f88e8f83e, type: 3}
+  - {fileID: 0}
+  targetImage: {fileID: 512512166}
 --- !u!1 &772709207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,18 +1089,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Phase 1: Deck Builder
+  m_text: '- "Free Pixel Art Woods Tileset and Background
 
-    - A total of 20 cards will appear, of them
-    use the mouse to click and select 20.
+    A downloadable asset
+    pack" by Karisori Studio
 
-    - Each card has a unique effect (in-development)
-
-    -
-    Once all 15 are selected the level can be started
-
-    - Each card is used alongside
-    an attack.'
+    - '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1127,8 +1121,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1534,7 +1528,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 714364577}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
         m_MethodName: OnPreviousClick
         m_Mode: 1
@@ -1861,7 +1855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial
+  m_text: Credits & Assets
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1924,7 +1918,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -258.59485, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
