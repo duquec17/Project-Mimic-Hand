@@ -38,20 +38,13 @@ public class CreditMenuController : MonoBehaviour
 
     public void OnNextClick()
     {
-        phase_Text.text = "Phase 2: In-Level " +
-            "\n- On entering the level, player moves using the AWSD key to go left, up, down, and right.";
-
+        // Change image to next one
         targetImage.sprite = refImage[1];
     }
 
     public void OnPreviousClick()
     {
-        phase_Text.text = "Phase 1: Deck Builder" +
-            "\n- A total of 20 cards will appear, of them use the mouse to click and select 20." +
-            "\n- Each card has a unique effect (in-development)." +
-            "\n- Once all 15 are selected the level can be started." +
-            "\n- Each card is used alongside an attack.";
-
+        // Change image to previous one
         targetImage.sprite = refImage[0];
     }
 

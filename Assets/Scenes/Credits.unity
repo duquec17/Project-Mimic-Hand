@@ -296,8 +296,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+      - m_Target: {fileID: 714364582}
+        m_TargetAssemblyTypeName: CreditMenuController, Assembly-CSharp
         m_MethodName: OnMenuClick
         m_Mode: 1
         m_Arguments:
@@ -430,8 +430,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+      - m_Target: {fileID: 714364582}
+        m_TargetAssemblyTypeName: CreditMenuController, Assembly-CSharp
         m_MethodName: OnNextClick
         m_Mode: 1
         m_Arguments:
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   phase_Text: {fileID: 772709208}
   refImage:
   - {fileID: 21300000, guid: 6dcd73fb0d6acd94cad4a14f88e8f83e, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 16efed984fdf3e74eb10ff326e45c072, type: 3}
   targetImage: {fileID: 512512166}
 --- !u!1 &772709207
 GameObject:
@@ -1093,6 +1093,8 @@ MonoBehaviour:
 
     A downloadable asset
     pack" by Karisori Studio
+
+    - "Fantasy Pixel Art Asset Pack" by TeamGriffin
 
     - '
   m_isRightToLeft: 0
@@ -1528,8 +1530,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+      - m_Target: {fileID: 714364582}
+        m_TargetAssemblyTypeName: CreditMenuController, Assembly-CSharp
         m_MethodName: OnPreviousClick
         m_Mode: 1
         m_Arguments:
