@@ -182,7 +182,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.4339623, g: 0.42440966, b: 0.42440966, a: 0.56078434}
+  m_Color: {r: 0.03773582, g: 0.032277178, b: 0.032277178, a: 0.56078434}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1099,7 +1099,10 @@ MonoBehaviour:
     - "Fantasy Pixel Art Asset Pack" by TeamGriffin
 
     -
-    "Agis Free with total 15 frames of animation" by Papoy Core'
+    "Agis Free with total 15 frames of animation" by Papoy Core
+
+    Game Made by
+    Cristian Duque aka Segundo Soul'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
