@@ -39,7 +39,10 @@ public class StartMenuController : MonoBehaviour
     public void OnNextClick()
     {
         phase_Text.text = "Phase 2: In-Level " +
-            "\n- On entering the level, player moves using the AWSD key to go left, up, down, and right.";
+            "\n- On entering the level, player moves using the AWSD key to go left, up, down, and right." +
+            "\n- You are able to attack with any of the keys (U, I, O, P, J)." +
+            "\n- Each button will use one of the cards matching the same position of the card with that of the button." +
+            "\n- Ex: Pressing 'U' will use the 1st card (far left).";
         
         targetImage.sprite = refImage[1];
     }
