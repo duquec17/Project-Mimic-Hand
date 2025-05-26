@@ -2482,19 +2482,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7918914078976320148, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
       propertyPath: m_Size.x
-      value: 1.1633587
+      value: 0.48331463
       objectReference: {fileID: 0}
     - target: {fileID: 7918914078976320148, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
       propertyPath: m_Size.y
-      value: 2.3365688
+      value: 1.4418844
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918914078976320148, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7918914078976320148, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
       propertyPath: m_Offset.x
-      value: -0.0668284
+      value: -0.00745935
       objectReference: {fileID: 0}
     - target: {fileID: 7918914078976320148, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
       propertyPath: m_Offset.y
-      value: 0.014850855
+      value: -0.3728457
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918914078976320148, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7918914078976320148, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -2513,8 +2521,20 @@ PrefabInstance:
       value: 2.3999999
       objectReference: {fileID: 0}
     - target: {fileID: 7918914078976320149, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918914078976320149, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
       propertyPath: m_BodyType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918914078976320149, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918914078976320149, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7918914078976320150, guid: 1c25815aec0da564ba5ec4732994071b, type: 3}
       propertyPath: m_RootOrder
@@ -2746,6 +2766,10 @@ PrefabInstance:
       propertyPath: deck
       value: 
       objectReference: {fileID: 1874653659}
+    - target: {fileID: 9145044617915373789, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
+      propertyPath: jumpForce
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9145044617915373789, guid: 27f5ae5d2f582364e8f4f27d2d79ab6f, type: 3}
       propertyPath: textBoxManager
       value: 
