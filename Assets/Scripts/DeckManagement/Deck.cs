@@ -314,8 +314,6 @@ public class Deck : MonoBehaviour
             {
                 handContents += card.name + ", "; // Replace `card.name` with the relevant property of your Card class
             }
-            
-            // Debug.Log(handContents.TrimEnd(',', ' '));
         }
         else
         {
