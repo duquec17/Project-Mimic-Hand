@@ -109,6 +109,7 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+    // Tracks which attack button has been pressed
     private int GetCardIndexFromKey(KeyCode key)
     {
         switch (key)
@@ -124,7 +125,7 @@ public class PlayerControls : MonoBehaviour
             case KeyCode.J:
                 return 4; // Rightmost card
             default:
-                return -1; // Invald attack key press
+                return -1; // Invalid attack key press
         }
     }
 
@@ -135,6 +136,7 @@ public class PlayerControls : MonoBehaviour
         Debug.Log($"Current damage multiplier set to: {damageMultiplier}");
     }
 
+    // Function controlling attack logic
     private void Attack(int cardIndex)
     {
         // Show the sprite for the attackTransform object
