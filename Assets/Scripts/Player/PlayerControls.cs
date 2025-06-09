@@ -210,33 +210,21 @@ public class PlayerControls : MonoBehaviour
         damageMultiplier = 1f;
 
         // Removes the used card from the hand
+        RemoveCardFromHand(cardIndex);
+    }
+
+    // Function for card removal
+    private void RemoveCardFromHand(int cardIndex)
+    {
         if (deck != null && cardIndex >= 0 && cardIndex < deck.HandCards.Count)
         {
             deck.DiscardCard(deck.HandCards[cardIndex]);
-        } else
+        }
+        else
         {
             Debug.LogWarning("Trying to discard a card that doesn't exist in the hand");
         }
     }
-
-    /* TBD: uses the 2nd card in the hand which is tied to pressing the J key when in the level
-    private void JAttack()
-    {
-        // 
-        hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
-
-        for (int i = 0; i < hits.Length; i++)
-        {
-            IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
-
-            if (iDamageable != null)
-            {
-                // Apply damage
-                iDamageable.Damage(damageAmount);
-            }
-        }
-    }
-    */ 
     
     // Draws the attack hitbox in the editor
     private void OnDrawGizmosSelected()
@@ -244,6 +232,7 @@ public class PlayerControls : MonoBehaviour
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
     }
 
+    // Plays attack visual (Purple circle)
     private IEnumerator ShowAttackSprite()
     {
         SpriteRenderer spriteRenderer = attackTransform.GetComponent<SpriteRenderer>();
