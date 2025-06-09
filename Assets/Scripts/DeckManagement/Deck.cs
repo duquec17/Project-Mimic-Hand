@@ -279,6 +279,7 @@ public class Deck : MonoBehaviour
         // Clear the current hand before drawing new cards
         HandCards.Clear();
 
+
         for (int i = 0; i < amount; i++)
         {
             if (deckPile.Count <= 0)
