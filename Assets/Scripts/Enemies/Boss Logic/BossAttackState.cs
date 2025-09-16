@@ -5,8 +5,8 @@ using UnityEngine;
 public class BossAttackState : IEnemyState
 {
     private float attackCooldown = 5f; // Every 5 seconds
-    private float spikeCooldown = 3f; // Cooldown for spike attack
-    private float spikeTimer = 0f; // Timer to track spike cooldown
+    private float spikeCooldown; // Cooldown for spike attack
+    private float spikeTimer; // Timer to track spike cooldown
 
     public void EnterState(EnemyAI enemy)
     {
